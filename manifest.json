@@ -1,0 +1,83 @@
+{
+  "manifest_version": 3,
+  "name": "VoiceSave AI",
+  "version": "1.0.0",
+  "description": "Universal voice layer for AI web apps. Speak, record, and save AI responses as MP3, WAV, or M4A.",
+  "icons": {
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "128": "assets/icons/icon-128.png"
+  },
+  "action": {
+    "default_popup": "src/popup/popup.html",
+    "default_title": "VoiceSave AI - Speak & Save",
+    "default_icon": {
+      "16": "assets/icons/icon-16.png",
+      "32": "assets/icons/icon-32.png",
+      "48": "assets/icons/icon-48.png",
+      "128": "assets/icons/icon-128.png"
+    }
+  },
+  "options_ui": {
+    "page": "src/options/options.html",
+    "open_in_tab": true
+  },
+  "background": {
+    "service_worker": "src/background/service-worker.js",
+    "type": "module"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://gemini.google.com/*",
+        "https://claude.ai/*",
+        "https://www.perplexity.ai/*"
+      ],
+      "js": ["src/audio/lame.min.js", "src/content/content.js"],
+      "css": ["src/content/toolbar.css"],
+      "run_at": "document_idle"
+    }
+  ],
+  "host_permissions": [
+    "https://chatgpt.com/*",
+    "https://chat.openai.com/*",
+    "https://gemini.google.com/*",
+    "https://claude.ai/*",
+    "https://www.perplexity.ai/*",
+    "https://translate.google.com/*",
+    "https://translate.googleapis.com/*"
+  ],
+  "permissions": [
+    "storage",
+    "activeTab",
+    "scripting",
+    "contextMenus",
+    "downloads"
+  ],
+  "web_accessible_resources": [
+    {
+      "resources": [
+        "src/audio/*",
+        "src/content/*",
+        "src/tts/*",
+        "src/storage/*",
+        "src/utils/*",
+        "src/demo/*",
+        "assets/*",
+        "assets/audio/demo/*",
+        "assets/icons/*"
+      ],
+      "matches": [
+        "https://chatgpt.com/*",
+        "https://chat.openai.com/*",
+        "https://gemini.google.com/*",
+        "https://claude.ai/*",
+        "https://www.perplexity.ai/*",
+        "<all_urls>"
+      ]
+    }
+  ]
+}

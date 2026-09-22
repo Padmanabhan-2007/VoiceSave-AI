@@ -1,0 +1,90 @@
+/**
+ * VoiceSave AI - Centralized Design Tokens
+ * Visual Source of Truth: Stitch Project 12503820058086942140
+ * Theme: Editorial Acoustic Luxury
+ * Typography: Newsreader (Editorial Serif) + Plus Jakarta Sans (Functional Grotesque)
+ * Palette: Cream Canvas (#FAF9F5), Sand Oat (#EFE9DE), Coral Kinetic Accent (#CC785C), Obsidian Dark (#181715)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
+@import url('https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+:root {
+  /* Canvas & Light Surfaces (Stitch Tokens) */
+  --vs-canvas: #faf9f5;
+  --vs-surface-lowest: #ffffff;
+  --vs-surface-low: #f4f4f0;
+  --vs-surface-card: #efe9de;
+  --vs-surface-container: #efeeea;
+  --vs-surface-high: #e9e8e4;
+  --vs-surface-highest: #e3e2df;
+  --vs-surface-input: #ffffff;
+
+  /* Dark Obsidian Product Surfaces (Audio Player, Waveform, In-Page Toolbar) */
+  --vs-surface-dark: #181715;
+  --vs-surface-dark-elevated: #23211e;
+  --vs-surface-dark-card: #1f1d1a;
+  --vs-surface-dark-container: #2d2b27;
+  --vs-surface-dark-border: #35322d;
+  --vs-surface-inverse: #2f312e;
+
+  /* Coral Kinetic Primary Accent */
+  --vs-primary: #cc785c;
+  --vs-primary-hover: #b8654b;
+  --vs-primary-active: #8f482f;
+  --vs-primary-dark: #8f482f;
+  --vs-primary-container: #ad5f45;
+  --vs-primary-fixed: #ffdbd0;
+  --vs-primary-fixed-dim: #ffb59d;
+  --vs-on-primary: #ffffff;
+  --vs-on-primary-fixed: #390c00;
+  --vs-primary-subtle: rgba(204, 120, 92, 0.12);
+  --vs-primary-border: rgba(204, 120, 92, 0.35);
+
+  /* Typography Colors */
+  --vs-ink: #1b1c1a;
+  --vs-body: #3d3d3a;
+  --vs-secondary: #54433e;
+  --vs-muted: #605e5b;
+  --vs-tertiary: #5f5c53;
+  --vs-faint: #87736d;
+
+  /* Text on Dark Product Surfaces */
+  --vs-ink-on-dark: #faf9f5;
+  --vs-body-on-dark: #f2f1ed;
+  --vs-muted-on-dark: #cbc6bb;
+  --vs-tertiary-on-dark: #e8e2d7;
+
+  /* Borders & Dividers */
+  --vs-border: #e6dfd8;
+  --vs-border-light: #efeeea;
+  --vs-border-strong: #dac1ba;
+  --vs-border-outline: #87736d;
+  --vs-border-hairline: rgba(27, 28, 26, 0.08);
+
+  /* Semantic Feedback */
+  --vs-success: #3e8e58;
+  --vs-success-subtle: rgba(62, 142, 88, 0.12);
+  --vs-error: #ba1a1a;
+  --vs-error-container: #ffdad6;
+  --vs-error-subtle: rgba(186, 26, 26, 0.12);
+
+  /* Typography Families */
+  --vs-font-display: "Newsreader", Georgia, serif;
+  --vs-font-ui: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --vs-font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Radii */
+  --vs-radius-sm: 6px;
+  --vs-radius-md: 10px;
+  --vs-radius-lg: 14px;
+  --vs-radius-xl: 18px;
+  --vs-radius-2xl: 24px;
+  --vs-radius-pill: 9999px;
+
+  /* Shadows */
+  --vs-shadow-subtle: 0 1px 3px rgba(27, 28, 26, 0.04);
+  --vs-shadow-card: 0 2px 10px rgba(27, 28, 26, 0.06);
+  --vs-shadow-dropdown: 0 8px 24px rgba(27, 28, 26, 0.12);
+  --vs-shadow-obsidian: 0 12px 32px rgba(0, 0, 0, 0.35);
+}

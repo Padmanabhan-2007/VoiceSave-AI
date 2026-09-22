@@ -1,0 +1,44 @@
+{
+  "name": "voicesave-ai",
+  "version": "1.0.0",
+  "description": "Universal multilingual voice layer for AI web apps. Speak, translate, record, and save AI responses as MP3, WAV, or M4A.",
+  "type": "module",
+  "scripts": {
+    "start": "node scripts/serve.js",
+    "serve": "node scripts/serve.js",
+    "test": "node test/audio-encoders.test.js && node test/multilingual.test.js && node test/integration.test.js && node test/p0-bugs-fix.test.js && node test/real-production-repair.test.js && node test/chunking-and-web-translation.test.js",
+    "test:audio": "node test/audio-encoders.test.js",
+    "test:multilingual": "node test/multilingual.test.js",
+    "test:integration": "node test/integration.test.js",
+    "test:p0": "node test/p0-bugs-fix.test.js",
+    "test:repair": "node test/real-production-repair.test.js",
+    "test:chunking": "node test/chunking-and-web-translation.test.js",
+    "icons": "node scripts/generate-icons.js"
+  },
+  "keywords": [
+    "chrome-extension",
+    "tts",
+    "speech-synthesis",
+    "multilingual",
+    "translation",
+    "tamil",
+    "hindi",
+    "telugu",
+    "kannada",
+    "malayalam",
+    "bengali",
+    "mp3",
+    "wav",
+    "m4a",
+    "llm",
+    "chatgpt",
+    "gemini",
+    "claude",
+    "perplexity"
+  ],
+  "author": "VoiceSave AI Team",
+  "license": "MIT",
+  "dependencies": {
+    "lamejs": "^1.2.1"
+  }
+}

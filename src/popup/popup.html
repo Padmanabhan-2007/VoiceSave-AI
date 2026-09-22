@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>VoiceSave AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..600;1,6..72,400..600&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../utils/tokens.css" />
+  <link rel="stylesheet" href="popup.css" />
+</head>
+<body class="popup-body">
+  <div class="popup-container">
+    <!-- Extension Top Header -->
+    <header class="popup-header">
+      <div class="header-brand">
+        <div class="brand-icon" aria-hidden="true">
+          <span class="material-symbols-outlined icon-acoustic">graphic_eq</span>
+        </div>
+        <div class="brand-text">
+          <div class="brand-title-row">
+            <h1 class="brand-name">VoiceSave AI</h1>
+            <span id="mode-badge" class="mode-badge demo">
+              <span class="badge-dot"></span>
+              <span class="badge-text">Demo Mode</span>
+            </span>
+          </div>
+          <p class="brand-tagline">Voice layer for AI · <span class="tagline-highlight">Quick Ask</span></p>
+        </div>
+      </div>
+      <div class="header-actions">
+        <button id="btn-settings" class="icon-action-btn" title="Extension Settings" aria-label="Settings">
+          <span class="material-symbols-outlined">settings</span>
+        </button>
+      </div>
+    </header>
+
+    <main class="popup-main">
+      <!-- Section Title & Sub-heading -->
+      <section class="quick-ask-header">
+        <div class="hud-pill-row">
+          <span class="pulse-dot"></span>
+          <span class="hud-tag">QUICK ASK</span>
+          <span class="hud-badge">Acoustic HUD</span>
+        </div>
+        <h2 class="quick-ask-title">What would you like to hear?</h2>
+      </section>
+
+      <!-- Input Surface Module -->
+      <section class="input-card">
+        <div class="input-textarea-wrapper">
+          <textarea
+            id="question-input"
+            class="prompt-textarea"
+            maxlength="500"
+            placeholder="e.g. What is an SSD? or Explain polymorphism in Java..."
+            rows="3"
+          ></textarea>
+        </div>
+
+        <div class="input-toolbar-row">
+          <div class="input-templates">
+            <span class="templates-icon material-symbols-outlined">auto_awesome</span>
+            <span class="templates-label">Prompt Presets:</span>
+          </div>
+          <div class="input-meta">
+            <button id="clear-text-btn" class="clear-btn hidden" title="Clear text" type="button">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+            <span id="char-counter" class="char-counter">0/500</span>
+          </div>
+        </div>
+
+        <!-- Preset Chips -->
+        <div class="chips-scroll-container">
+          <button class="chip" data-query="What is an SSD?" data-lang="ta">
+            <span class="chip-lang-badge">த</span>
+            <span>SSD (Tamil — தமிழ்)</span>
+          </button>
+          <button class="chip" data-query="Explain polymorphism in Java in simple words." data-lang="hi">
+            <span class="chip-lang-badge">हि</span>
+            <span>Java (Hindi — हिन्दी)</span>
+          </button>
+          <button class="chip" data-query="Explain cloud computing." data-lang="te">
+            <span class="chip-lang-badge">తె</span>
+            <span>Cloud (Telugu — తెలుగు)</span>
+          </button>
+          <button class="chip" data-query="What is machine learning?" data-lang="kn">
+            <span class="chip-lang-badge">ಕ</span>
+            <span>ML (Kannada — ಕನ್ನಡ)</span>
+          </button>
+          <button class="chip" data-query="Explain quantum computing in simple words." data-lang="es">
+            <span class="chip-lang-badge">ES</span>
+            <span>Quantum (Spanish)</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- Target Language & Acoustic Voice Controls Grid -->
+      <section class="controls-section">
+        <!-- Target Language & Dialect Card -->
+        <div class="control-card language-card">
+          <div class="control-header">
+            <span class="control-eyebrow">Target Language & Dialect</span>
+            <span class="control-meta-tag">24 Indic & Global</span>
+          </div>
+          <div class="select-wrapper">
+            <div class="select-indicator-icon">
+              <span class="material-symbols-outlined">translate</span>
+            </div>
+            <select id="language-select" class="styled-select">
+              <optgroup label="Smart Modes">
+                <option value="auto">Auto Detect (Smart)</option>
+                <option value="original">Original Language</option>
+              </optgroup>
+              <optgroup label="Priority Indian Languages">
+                <option value="ta" selected>Tamil — தமிழ்</option>
+                <option value="hi">Hindi — हिन्दी</option>
+                <option value="te">Telugu — తెలుగు</option>
+                <option value="kn">Kannada — ಕನ್ನಡ</option>
+                <option value="ml">Malayalam — മലയാളം</option>
+                <option value="bn">Bengali — বাংলা</option>
+                <option value="mr">Marathi — मराठी</option>
+                <option value="gu">Gujarati — ગુજરાતી</option>
+                <option value="pa">Punjabi — ਪੰਜਾਬੀ</option>
+                <option value="ur">Urdu — اردو</option>
+                <option value="en">English (India)</option>
+              </optgroup>
+              <optgroup label="Global Languages">
+                <option value="es">Spanish — Español</option>
+                <option value="fr">French — Français</option>
+                <option value="pt">Portuguese — Português</option>
+                <option value="de">German — Deutsch</option>
+                <option value="it">Italian — Italiano</option>
+                <option value="nl">Dutch — Nederlands</option>
+                <option value="ru">Russian — Русский</option>
+                <option value="ja">Japanese — 日本語</option>
+                <option value="ko">Korean — 한국어</option>
+                <option value="zh">Chinese — 中文</option>
+                <option value="ar">Arabic — العربية</option>
+              </optgroup>
+            </select>
+            <span class="select-arrow material-symbols-outlined">unfold_more</span>
+          </div>
+        </div>
+
+        <!-- Voice Model & Audio Format Row -->
+        <div class="controls-dual-grid">
+          <!-- Voice Model Card -->
+          <div class="control-card voice-card">
+            <div class="control-header">
+              <span class="control-eyebrow">Voice Model</span>
+              <span class="control-pill-tag">HD Neural</span>
+            </div>
+            <div class="select-wrapper">
+              <div class="select-indicator-icon">
+                <span class="material-symbols-outlined">spatial_audio</span>
+              </div>
+              <select id="voice-select" class="styled-select">
+                <option value="">Natural Native Voice</option>
+              </select>
+              <span class="select-arrow material-symbols-outlined">unfold_more</span>
+            </div>
+          </div>
+
+          <!-- Acoustic Output / Format Card -->
+          <div class="control-card format-card">
+            <div class="control-header">
+              <span class="control-eyebrow">Acoustic Output</span>
+              <span id="format-desc" class="control-meta-tag">320kbps</span>
+            </div>
+            <div class="format-pill-group">
+              <select id="format-select" class="styled-select format-select-native">
+                <option value="MP3" selected>MP3</option>
+                <option value="WAV">WAV</option>
+                <option value="M4A">M4A</option>
+              </select>
+              <div class="format-pills-visual" aria-hidden="true">
+                <button type="button" class="format-pill active" data-format="MP3">MP3</button>
+                <button type="button" class="format-pill" data-format="WAV">WAV</button>
+                <button type="button" class="format-pill" data-format="M4A">M4A</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Dominant Primary CTA Section -->
+      <section class="cta-section">
+        <button id="btn-ask-speak" class="btn-primary-cta" type="button">
+          <span class="material-symbols-outlined cta-spark">auto_awesome</span>
+          <span class="cta-label">Ask &amp; Speak</span>
+          <span class="material-symbols-outlined cta-return">keyboard_return</span>
+        </button>
+        <p class="cta-caption">
+          Generates AI answer, translates to <span class="caption-highlight">Tamil</span> &amp; synthesizes high-fidelity audio.
+        </p>
+      </section>
+
+      <!-- Dynamic AI Answer Card -->
+      <section id="answer-section" class="answer-section" style="display: none;">
+        <div class="answer-card">
+          <div class="answer-card-header">
+            <div class="answer-title-group">
+              <span class="material-symbols-outlined answer-icon">forum</span>
+              <span class="answer-heading">AI Response</span>
+            </div>
+            <span id="detected-lang-pill" class="detected-badge">Detected: English</span>
+          </div>
+
+          <div id="answer-text" class="answer-body-text"></div>
+
+          <!-- Translated Output Box -->
+          <div id="translated-box" class="translated-box" style="display: none;">
+            <div class="translated-box-header">
+              <span class="material-symbols-outlined">translate</span>
+              <span id="translated-lang-label" class="translated-lang-title">Tamil Translation:</span>
+            </div>
+            <div id="translated-text" class="translated-body-text"></div>
+          </div>
+
+          <!-- Audio Action Controls Bar -->
+          <div class="answer-actions-bar">
+            <button id="btn-answer-speak" class="action-btn btn-speak" type="button">
+              <span class="material-symbols-outlined">volume_up</span>
+              <span>Speak</span>
+            </button>
+            <button id="btn-answer-translate" class="action-btn btn-translate" type="button">
+              <span class="material-symbols-outlined">translate</span>
+              <span>Translate &amp; Speak</span>
+            </button>
+            <button id="btn-answer-stop" class="action-btn btn-stop" type="button" style="display: none;">
+              <span class="material-symbols-outlined">stop_circle</span>
+              <span>Stop</span>
+            </button>
+            <button id="btn-answer-record" class="btn-record-action" type="button">
+              <span class="rec-pulsing-dot"></span>
+              <span id="record-label">Record &amp; Save</span>
+            </button>
+            <span id="record-timer" class="record-timer" style="display: none;">00:00</span>
+            <span id="status-ready-badge" class="ready-badge" style="display: none;">
+              <span class="material-symbols-outlined">check_circle</span>
+              <span>Audio Ready</span>
+            </span>
+          </div>
+
+          <!-- Signature Obsidian Audio Player Card -->
+          <div id="audio-player-card" class="obsidian-player-card" style="display: none;">
+            <div class="player-header-row">
+              <div class="player-track-info">
+                <div class="player-wave-icon">
+                  <span class="material-symbols-outlined">graphic_eq</span>
+                </div>
+                <div class="player-meta-text">
+                  <h4 id="player-track-title" class="player-title">Spoken Audio</h4>
+                  <p id="player-track-meta" class="player-subtitle">Tamil · MP3 · Ready</p>
+                </div>
+              </div>
+              <span class="player-badge">
+                <span class="badge-dot-green"></span>
+                <span>Lossless Buffer</span>
+              </span>
+            </div>
+
+            <!-- Waveform & Scrubber Track -->
+            <div class="player-interactive-row">
+              <button id="btn-answer-play" class="player-play-btn" title="Play audio" type="button">
+                <span class="material-symbols-outlined">play_arrow</span>
+              </button>
+              <div class="player-waveform-scrubber">
+                <div class="waveform-bars-visual" aria-hidden="true">
+                  <span class="w-bar h-3 active"></span>
+                  <span class="w-bar h-5 active"></span>
+                  <span class="w-bar h-2 active"></span>
+                  <span class="w-bar h-6 active"></span>
+                  <span class="w-bar h-4 active"></span>
+                  <span class="w-bar h-5 active"></span>
+                  <span class="w-bar h-3 active"></span>
+                  <span class="w-bar h-4"></span>
+                  <span class="w-bar h-6"></span>
+                  <span class="w-bar h-3"></span>
+                  <span class="w-bar h-5"></span>
+                  <span class="w-bar h-2"></span>
+                  <span class="w-bar h-4"></span>
+                  <span class="w-bar h-5"></span>
+                  <span class="w-bar h-2"></span>
+                  <span class="w-bar h-3"></span>
+                </div>
+                <div class="scrubber-track-bg">
+                  <div id="player-progress-fill" class="scrubber-progress"></div>
+                </div>
+              </div>
+              <span id="player-time-display" class="player-time">00:00</span>
+            </div>
+
+            <!-- Download Audio Action CTA -->
+            <button id="btn-answer-download" class="btn-obsidian-download" title="Download audio file" type="button">
+              <span class="material-symbols-outlined">download</span>
+              <span>Download Audio</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Recent Audio Chamber (Obsidian Styling) -->
+      <section class="recent-audio-section">
+        <div class="recent-header">
+          <div class="recent-title-group">
+            <span class="material-symbols-outlined">history</span>
+            <span class="recent-eyebrow">RECENT AUDIO</span>
+          </div>
+          <button id="btn-clear-recent" class="clear-recent-btn" type="button">Clear</button>
+        </div>
+        <div id="recordings-list" class="recordings-list-container"></div>
+      </section>
+    </main>
+
+    <!-- Footer / Simulator Sandbox Link -->
+    <footer class="popup-footer">
+      <a href="#" id="link-demo-sandbox" class="sandbox-trigger-link">
+        <span class="link-pulse-dot"></span>
+        <span>Open Multilingual Simulator ↗</span>
+      </a>
+    </footer>
+  </div>
+
+  <script src="../audio/lame.min.js"></script>
+  <script type="module" src="popup.js"></script>
+</body>
+</html>

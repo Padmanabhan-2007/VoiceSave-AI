@@ -1,0 +1,300 @@
+/**
+ * VoiceSave AI - In-Page Injected Toolbar Styles
+ * Visual Source of Truth: Stitch Project 12503820058086942140
+ * Screen: Live Host Simulator & In-Page Injection (85639a4d & 219d0d35)
+ * Theme: Signature Obsidian Dark Pill Surface (#181715) + Kinetic Coral Accent (#CC785C)
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+.voicesave-toolbar-wrapper {
+  margin-top: 14px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-family: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  font-size: 12px;
+  line-height: 1.4;
+  z-index: 99999;
+  user-select: none;
+}
+
+/* Signature Obsidian Dark Pill Toolbar Surface */
+.voicesave-toolbar {
+  display: inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px;
+  background: #181715;
+  color: #faf9f5;
+  border: 1px solid #35322d;
+  border-radius: 9999px;
+  padding: 6px 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+  transition: all 0.2s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+
+.voicesave-toolbar:hover {
+  border-color: #48453e;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.45);
+}
+
+/* Base Toolbar Button */
+.voicesave-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background: rgba(255, 255, 255, 0.08);
+  color: #f2f1ed;
+  font-family: inherit;
+  font-size: 11.5px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.voicesave-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  color: #ffffff;
+}
+
+.voicesave-btn:active {
+  transform: scale(0.97);
+}
+
+.voicesave-btn:focus-visible {
+  box-shadow: 0 0 0 2px #cc785c;
+}
+
+.voicesave-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Speak Button (Kinetic Coral Primary in Stitch) */
+.voicesave-btn-speak {
+  background: #cc785c;
+  color: #ffffff;
+  border-color: #ad5f45;
+  box-shadow: 0 2px 8px rgba(204, 120, 92, 0.3);
+}
+
+.voicesave-btn-speak:hover {
+  background: #b8654b;
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(204, 120, 92, 0.45);
+}
+
+.voicesave-btn-speak.is-active {
+  background: #8f482f;
+  color: #ffffff;
+}
+
+/* Stop Button */
+.voicesave-btn-stop {
+  background: rgba(186, 26, 26, 0.25);
+  border: 1px solid rgba(186, 26, 26, 0.4);
+  color: #ffb4ab;
+}
+
+.voicesave-btn-stop:hover {
+  background: rgba(186, 26, 26, 0.4);
+  color: #ffffff;
+}
+
+/* Translate & Speak Button */
+.voicesave-btn-translate {
+  background: rgba(204, 120, 92, 0.15);
+  border: 1px solid rgba(204, 120, 92, 0.35);
+  color: #ffdbd0;
+}
+
+.voicesave-btn-translate:hover {
+  background: rgba(204, 120, 92, 0.28);
+  color: #ffffff;
+  border-color: #cc785c;
+}
+
+.voicesave-btn-translate.is-translating {
+  background: #cc785c;
+  color: #ffffff;
+}
+
+/* Record Button */
+.voicesave-btn-record {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid #35322d;
+  color: #f2f1ed;
+}
+
+.voicesave-btn-record:hover {
+  background: rgba(255, 255, 255, 0.15);
+  color: #ffffff;
+}
+
+.voicesave-btn-record.is-recording {
+  background: rgba(186, 26, 26, 0.35);
+  border-color: #ba1a1a;
+  color: #ffffff;
+  animation: voicesave-record-pulse 1.6s infinite ease-in-out;
+}
+
+@keyframes voicesave-record-pulse {
+  0% { box-shadow: 0 0 0 0 rgba(204, 120, 92, 0.7); }
+  70% { box-shadow: 0 0 0 8px rgba(204, 120, 92, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(204, 120, 92, 0); }
+}
+
+.voicesave-record-dot {
+  display: inline-block;
+  font-size: 9px;
+  line-height: 1;
+}
+
+/* Play Button */
+.voicesave-btn-play {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #ffffff;
+}
+
+.voicesave-btn-play:hover {
+  background: var(--vs-primary, #cc785c);
+  border-color: #b8654b;
+}
+
+/* Download Audio Button */
+.voicesave-btn-download {
+  background: #cc785c;
+  border: 1px solid #b8654b;
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(204, 120, 92, 0.35);
+}
+
+.voicesave-btn-download:hover {
+  background: #b8654b;
+  box-shadow: 0 4px 12px rgba(204, 120, 92, 0.5);
+}
+
+/* Dropdown Selectors inside Obsidian Toolbar */
+.voicesave-lang-select,
+.voicesave-format-select {
+  background: #23211e;
+  color: #faf9f5;
+  border: 1px solid #35322d;
+  border-radius: 9999px;
+  padding: 4px 10px;
+  font-family: inherit;
+  font-size: 11px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  transition: all 0.15s ease;
+  max-width: 150px;
+}
+
+.voicesave-lang-select:hover,
+.voicesave-format-select:hover {
+  border-color: #cc785c;
+  background: #2d2b27;
+}
+
+.voicesave-lang-select:focus,
+.voicesave-format-select:focus {
+  border-color: #cc785c;
+  box-shadow: 0 0 0 1px #cc785c;
+}
+
+.voicesave-format-select {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  color: #ffdbd0;
+}
+
+/* Status & Timer Badges */
+.voicesave-status-badge {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: #cbc6bb;
+  padding: 0 4px;
+}
+
+.voicesave-status-badge.recording {
+  color: #ffb59d;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.voicesave-status-badge.translating {
+  color: #ffdbd0;
+  font-weight: 600;
+}
+
+.voicesave-status-badge.ready {
+  color: #5db872;
+  font-weight: 700;
+}
+
+.voicesave-red-dot {
+  width: 6px;
+  height: 6px;
+  background-color: #ff5449;
+  border-radius: 50%;
+  display: inline-block;
+  animation: voicesave-blink 1s ease-in-out infinite alternate;
+}
+
+@keyframes voicesave-blink {
+  from { opacity: 0.3; }
+  to { opacity: 1; }
+}
+
+/* In-Page Expanded Translation Drawer (Stitch Screen 85639a4d) */
+.voicesave-translation-preview {
+  width: 100%;
+  max-width: 760px;
+  background: #23211e;
+  color: #faf9f5;
+  border: 1px solid #35322d;
+  border-radius: 14px;
+  padding: 14px 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  margin-top: 8px;
+  display: none;
+  animation: voicesave-drawer-fade 0.25s cubic-bezier(0.2, 0.8, 0.2, 1);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.voicesave-translation-header {
+  font-size: 11px;
+  font-weight: 700;
+  color: #ffdbd0;
+  margin-bottom: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+@keyframes voicesave-drawer-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

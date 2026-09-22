@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceSave AI — Unified Acoustic Workspace & Studio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../utils/tokens.css" />
+  <link rel="stylesheet" href="../content/toolbar.css" />
+  <link rel="stylesheet" href="demo.css" />
+</head>
+<body class="demo-body">
+  <!-- Desktop Fixed Top Navigation Bar (64px) -->
+  <header class="desktop-topbar">
+    <div class="topbar-brand">
+      <div class="topbar-logo" aria-hidden="true">
+        <span class="material-symbols-outlined">graphic_eq</span>
+      </div>
+      <div class="topbar-brand-meta">
+        <div class="topbar-title-row">
+          <span class="topbar-app-name">VoiceSave AI</span>
+          <span class="topbar-status-pill">
+            <span class="pulse-dot"></span>
+            <span>Extension v2.4.1 Active</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Active Channel Live Indicator in Topbar -->
+    <div class="topbar-center-info">
+      <div class="topbar-hook-pill">
+        <span class="hook-dot-live"></span>
+        <span class="hook-label">DOM Hook Live</span>
+        <span class="hook-sep">·</span>
+        <span class="hook-detail">Claude &amp; ChatGPT Connected</span>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <div class="topbar-shortcut-pill" title="Quick Capture Hotkey">
+        <span class="material-symbols-outlined">keyboard</span>
+        <span>⌘+Shift+S</span>
+      </div>
+      <a href="../popup/popup.html" target="_blank" class="topbar-action-btn secondary" id="btn-inspect-popup" title="Open Extension Popup">
+        <span class="material-symbols-outlined">extension</span>
+        <span>Popup (400px)</span>
+      </a>
+      <button class="topbar-action-btn primary" id="btn-quick-ask" type="button">
+        <span class="material-symbols-outlined">bolt</span>
+        <span>Quick Ask</span>
+      </button>
+      <div class="topbar-avatar" title="VoiceSave Audio Profile">
+        <span class="material-symbols-outlined">person</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Desktop App Shell (Sidebar + Main Workspace) -->
+  <div class="desktop-shell">
+    <!-- Left Navigation Sub-Sidebar (260px) - Aligned with Stitch IA -->
+    <aside class="desktop-sidebar">
+      <div class="sidebar-nav-group">
+        <div class="sidebar-section-title">Workspace</div>
+        <nav class="sidebar-nav">
+          <button class="sidebar-link active" id="nav-home" data-view="view-home" type="button">
+            <span class="material-symbols-outlined">home</span>
+            <span>Home</span>
+          </button>
+          <button class="sidebar-link" id="nav-ai-responses" data-view="view-host-simulator" type="button">
+            <span class="material-symbols-outlined">chat</span>
+            <span>AI Responses</span>
+          </button>
+          <button class="sidebar-link" id="nav-script-studio" data-view="view-script-studio" type="button">
+            <span class="material-symbols-outlined">description</span>
+            <span>Script to Speech</span>
+          </button>
+          <button class="sidebar-link" id="nav-recordings" data-view="view-recordings" type="button">
+            <span class="material-symbols-outlined">graphic_eq</span>
+            <span>Recordings</span>
+          </button>
+          <button class="sidebar-link" id="nav-languages" data-view="view-languages" type="button">
+            <span class="material-symbols-outlined">translate</span>
+            <span>Languages &amp; Voices</span>
+          </button>
+          <button class="sidebar-link" id="nav-settings" data-view="view-settings" type="button">
+            <span class="material-symbols-outlined">settings</span>
+            <span>Settings</span>
+          </button>
+        </nav>
+      </div>
+
+      <div class="sidebar-footer-card">
+        <div class="footer-card-header">
+          <div class="footer-card-status">
+            <span class="footer-card-dot"></span>
+            <span class="footer-card-tag">Lossless 48kHz</span>
+          </div>
+          <span class="footer-card-title">Acoustic Engine</span>
+        </div>
+        <p class="footer-card-desc">Active Hook: Multi-LLM (Claude · ChatGPT · Gemini)</p>
+        <div class="footer-card-meta">
+          <span>Quick Capture</span>
+          <kbd>⌘+Shift+S</kbd>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Workspace Canvas Area -->
+    <main class="desktop-main">
+
+      <!-- ======================================================== -->
+      <!-- VIEW 1: HOME — Unified Acoustic Workspace (Stitch 13769d3c) -->
+      <!-- ======================================================== -->
+      <div id="view-home" class="workspace-view active">
+        <!-- Top Workspace Editorial Heading & Status Ribbon -->
+        <section class="home-hero-section">
+          <div class="home-hero-header">
+            <div class="home-hero-titles">
+              <div class="home-orchestrator-tag">
+                <span class="ping-dot"></span>
+                <span class="tag-primary">Acoustic Master Orchestrator</span>
+                <span class="tag-sep">/</span>
+                <span class="tag-secondary">Direct Buffer Hook</span>
+              </div>
+              <h1 class="home-main-title">Unified Audio Workspace</h1>
+              <p class="home-main-desc">
+                Transform frontier LLM responses, authored scripts, and spontaneous thoughts into archival studio-grade speech with phoneme-accurate preservation.
+              </p>
+            </div>
+
+            <!-- Live Session Metric Pill -->
+            <div class="session-metric-pill">
+              <div class="metric-meta">
+                <span class="metric-label">Acoustic Buffer</span>
+                <span class="metric-val">Ready · Low Latency (24ms)</span>
+              </div>
+              <div class="metric-divider"></div>
+              <div class="metric-codec">
+                <span class="material-symbols-outlined">hearing</span>
+                <span class="codec-text">48kHz Lossless</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Linear Step Pipeline Bar (5-Step Archival Workflow) -->
+          <div class="linear-pipeline-bar">
+            <nav class="pipeline-steps-nav" aria-label="Workflow Steps">
+              <!-- Step 1: Active Ingest -->
+              <div class="pipeline-step active">
+                <div class="step-num">1</div>
+                <div class="step-meta">
+                  <span class="step-title">Content Ingest</span>
+                  <span class="step-desc">DOM Intercept Active</span>
+                </div>
+              </div>
+              <!-- Step 2: Dialect -->
+              <div class="pipeline-step">
+                <div class="step-num">2</div>
+                <div class="step-meta">
+                  <span class="step-title">Dialect &amp; Script</span>
+                  <span class="step-desc">IndicPhonetic v4.2</span>
+                </div>
+              </div>
+              <!-- Step 3: Voice Timbre -->
+              <div class="pipeline-step">
+                <div class="step-num">3</div>
+                <div class="step-meta">
+                  <span class="step-title">Voice &amp; Timbre</span>
+                  <span class="step-desc">Subhashini Neural</span>
+                </div>
+              </div>
+              <!-- Step 4: Synthesis -->
+              <div class="pipeline-step">
+                <div class="step-num">4</div>
+                <div class="step-meta">
+                  <span class="step-title">Acoustic Synthesis</span>
+                  <span class="step-desc">Lossless 320k</span>
+                </div>
+              </div>
+              <!-- Step 5: Export -->
+              <div class="pipeline-step">
+                <div class="step-num">5</div>
+                <div class="step-meta">
+                  <span class="step-title">Vault &amp; Export</span>
+                  <span class="step-desc">Sync Enabled</span>
+                </div>
+              </div>
+            </nav>
+          </div>
+        </section>
+
+        <!-- Main 12-Column Unified Master Surface -->
+        <section class="master-12col-grid">
+          <!-- LEFT: 8 Columns Primary Content Surface -->
+          <div class="col-span-8 content-primary-surface">
+            <!-- Source Toggle & Channel Status Header -->
+            <div class="source-toggle-bar">
+              <div class="source-tabs">
+                <button class="source-tab-btn active" id="tab-source-ai" type="button">
+                  <span class="material-symbols-outlined">smart_toy</span>
+                  <span>Intercepted AI Stream</span>
+                  <span class="live-badge">LIVE</span>
+                </button>
+                <button class="source-tab-btn" id="tab-source-custom" type="button">
+                  <span class="material-symbols-outlined">edit_note</span>
+                  <span>Custom Script / Text</span>
+                </button>
+              </div>
+              <div class="channel-status-tag">
+                <span class="status-dot-green"></span>
+                <span>Claude 3.5 Sonnet</span>
+                <span class="sep">·</span>
+                <span class="url-mono">claude.ai/chat/arch-9104</span>
+              </div>
+            </div>
+
+            <!-- Content Viewer Card -->
+            <div class="content-viewer-card">
+              <!-- Metadata Pill Row -->
+              <div class="viewer-meta-row">
+                <div class="meta-pills-wrap">
+                  <span class="meta-tag font-mono">Hook: DOM.MutationObserved</span>
+                  <span class="meta-tag font-mono">Latency: 0.12s</span>
+                  <span class="meta-tag font-mono">312 words · 1,940 chars</span>
+                </div>
+                <div class="viewer-actions-wrap">
+                  <button class="btn-icon" id="btn-copy-raw-content" title="Copy raw markdown" type="button">
+                    <span class="material-symbols-outlined">content_copy</span>
+                  </button>
+                  <button class="btn-icon" id="btn-reload-content" title="Reload from DOM hook" type="button">
+                    <span class="material-symbols-outlined">refresh</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Document Headline -->
+              <h2 class="viewer-doc-headline" id="home-doc-title">
+                The Architectural Difference Between Monolithic and Distributed Microservices
+              </h2>
+
+              <!-- Rendered Text Body -->
+              <div class="viewer-doc-body" id="home-doc-body">
+                <p>
+                  At its core, a <strong>monolithic architecture</strong> consolidates computation, persistence routing, and runtime memory within a single address space. Memory locality eliminates network hops: method invocations complete in nanoseconds with zero serialization tax. However, blast radiuses scale proportionally—an unhandled panic in a background job can cascade into complete cluster exhaustion.
+                </p>
+
+                <!-- Technical Code / Callout Block -->
+                <div class="latency-matrix-callout">
+                  <div class="callout-header">
+                    <span class="callout-badge">LATENCY PROFILE MATRIX</span>
+                    <span class="callout-sub">L1 In-Memory vs RPC Mesh</span>
+                  </div>
+                  <pre class="callout-code">Monolith: Direct Call -> ~0.0004ms | Thread Lock Contention: Low
+Microservices: gRPC/Protobuf -> ~2.8ms | TLS + SerDe Overhead: 34%</pre>
+                </div>
+
+                <p>
+                  Conversely, <strong>distributed microservices</strong> decouple team topologies and failure zones at the steep price of distributed transactions, asynchronous eventual consistency, and pervasive RPC serialization overhead.
+                </p>
+              </div>
+
+              <!-- Quick Content Actions Bar -->
+              <div class="content-actions-bar">
+                <div class="action-btn-group">
+                  <button class="content-action-btn secondary" id="btn-home-speak-en" type="button">
+                    <span class="material-symbols-outlined">play_circle</span>
+                    <span>Speak Original (EN)</span>
+                  </button>
+                  <button class="content-action-btn primary" id="btn-home-translate-ta" type="button">
+                    <span class="material-symbols-outlined">translate</span>
+                    <span>Translate &amp; Synthesize (TA)</span>
+                  </button>
+                  <button class="content-action-btn secondary" id="btn-home-voice-annotation" type="button">
+                    <span class="material-symbols-outlined error-icon">mic</span>
+                    <span>Voice Annotation</span>
+                  </button>
+                </div>
+                <button class="btn-drawer-toggle" id="toggle-translation-drawer" type="button">
+                  <span class="material-symbols-outlined">layers</span>
+                  <span>Phonetic Drawer</span>
+                  <span class="material-symbols-outlined chevron-icon" id="drawer-chevron">expand_more</span>
+                </button>
+              </div>
+
+              <!-- Expandable Phonetic & Translation Viewport -->
+              <div class="phonetic-drawer-card" id="translation-drawer">
+                <div class="drawer-header-row">
+                  <div class="target-lang-info">
+                    <span class="target-badge">TARGET</span>
+                    <span class="target-title">Tamil — தமிழ்</span>
+                    <span class="target-engine">(IndicNeural Phonetic Preservation Engine v4.2)</span>
+                  </div>
+                  <div class="phoneme-status">
+                    <span class="status-dot-green"></span>
+                    <span>Phoneme Map 99.4% Validated</span>
+                  </div>
+                </div>
+
+                <!-- Translated Content with Phonetic Footnotes -->
+                <div class="drawer-content-box">
+                  <p class="translated-text">
+                    அடிப்படையில், ஒரு <span class="phonetic-highlight" title="Phonetic: Mōṉōlitik">மோனோலிதிக்</span> கட்டமைப்பானது கணக்கீடு, தரவுத்தள வழிசெலுத்தல் மற்றும் இயக்க நேர நினைவகத்தை ஒரே முகவரி இடத்தில் ஒருங்கிணைக்கிறது.
+                    <span class="phonetic-annotation">[Memory Locality: நினைவக உள்ளூர்மயமாக்கல்]</span>
+                    நெட்வொர்க் தாமதங்களை முற்றிலும் நீக்குகிறது. ஆனால்,
+                    <span class="phonetic-annotation">[Network Serialization: பிணைய வரிசைப்படுத்தல்]</span>
+                    செலவுகள் விநியோகிக்கப்பட்ட மைக்ரோசர்வீசஸ்களில் அதிகமாக உள்ளன.
+                  </p>
+                </div>
+                <div class="drawer-footer-row">
+                  <span>Phonetic Engine: Neural Pitch Preserved · Technical Acronyms Retained in Latin Script</span>
+                  <button class="btn-link" type="button">Edit Phoneme Rules</button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT: 4 Columns Synthesis Control Desk -->
+          <div class="col-span-4 synthesis-control-surface">
+            <!-- Unified Synthesis Configuration Card -->
+            <div class="synthesis-card">
+              <div class="synthesis-card-header">
+                <div class="card-title-group">
+                  <span class="material-symbols-outlined text-coral">tune</span>
+                  <h3 class="card-title">Acoustic Engine</h3>
+                </div>
+                <span class="version-badge">v4.8 Ultra</span>
+              </div>
+
+              <!-- 1. Language Quick Switcher -->
+              <div class="synthesis-field">
+                <div class="field-label-row">
+                  <label class="field-label">Target Dialect &amp; Script</label>
+                  <span class="field-active-val" id="active-dialect-label">Active: Tamil</span>
+                </div>
+                <div class="lang-chips-grid" id="home-lang-chips">
+                  <button class="lang-chip active" data-lang="ta" type="button">Tamil (தமிழ்)</button>
+                  <button class="lang-chip" data-lang="hi" type="button">Hindi (हिन्दी)</button>
+                  <button class="lang-chip" data-lang="te" type="button">Telugu (తెలుగు)</button>
+                  <button class="lang-chip" data-lang="kn" type="button">Kannada (ಕನ್ನಡ)</button>
+                  <button class="lang-chip" data-lang="en" type="button">English (UK)</button>
+                </div>
+              </div>
+
+              <!-- 2. Acoustic Voice Model Picker -->
+              <div class="synthesis-field">
+                <label class="field-label">Voice Timbre Profile</label>
+                <div class="timbre-picker-card">
+                  <div class="timbre-info">
+                    <div class="timbre-avatar">
+                      <span class="material-symbols-outlined">graphic_eq</span>
+                    </div>
+                    <div class="timbre-meta">
+                      <span class="timbre-name" id="home-timbre-name">Subhashini</span>
+                      <span class="timbre-desc" id="home-timbre-desc">Natural Female · IndicNeural Warmth</span>
+                    </div>
+                  </div>
+                  <button class="btn-audition-sample" id="btn-home-audition-voice" title="Audition Sample Voice" type="button">
+                    <span class="material-symbols-outlined">play_circle</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- 3. Audio Encoding Selector -->
+              <div class="synthesis-field">
+                <label class="field-label">Master Encoding Profile</label>
+                <div class="encoding-cards-grid">
+                  <label class="encoding-radio-card active">
+                    <input type="radio" name="home-encoding" value="MP3" checked />
+                    <span class="format-title">MP3</span>
+                    <span class="format-spec">320kbps</span>
+                  </label>
+                  <label class="encoding-radio-card">
+                    <input type="radio" name="home-encoding" value="WAV" />
+                    <span class="format-title">WAV</span>
+                    <span class="format-spec">48kHz Lossless</span>
+                  </label>
+                  <label class="encoding-radio-card">
+                    <input type="radio" name="home-encoding" value="M4A" />
+                    <span class="format-title">M4A</span>
+                    <span class="format-spec">Apple AAC</span>
+                  </label>
+                </div>
+              </div>
+
+              <!-- 4. Pacing & Pitch Sliders -->
+              <div class="synthesis-sliders-group">
+                <div class="slider-field">
+                  <div class="slider-label-row">
+                    <span>Speech Pacing</span>
+                    <span class="slider-val" id="pacing-val">1.00x (Natural)</span>
+                  </div>
+                  <input type="range" class="vs-range-input" id="input-pacing" min="0.75" max="1.75" step="0.05" value="1.0" />
+                  <div class="slider-scale-row">
+                    <span>0.75x</span>
+                    <span>1.0x</span>
+                    <span>1.75x</span>
+                  </div>
+                </div>
+
+                <div class="slider-field">
+                  <div class="slider-label-row">
+                    <span>Pitch &amp; Resonance</span>
+                    <span class="slider-val" id="pitch-val">+0 ST (Rich Neutral)</span>
+                  </div>
+                  <input type="range" class="vs-range-input" id="input-pitch" min="-4" max="4" step="1" value="0" />
+                  <div class="slider-scale-row">
+                    <span>-4 ST Deep</span>
+                    <span>0 Neutral</span>
+                    <span>+4 ST Bright</span>
+                  </div>
+                </div>
+              </div>
+
+              <!-- 5. Dominant High-Visibility Action Stack -->
+              <div class="action-stack">
+                <button class="btn-cta-primary" id="btn-home-speak-synthesize" type="button">
+                  <span class="material-symbols-outlined">new_window</span>
+                  <span>Speak &amp; Synthesize Audio</span>
+                  <kbd>⌘↵</kbd>
+                </button>
+                <button class="btn-cta-secondary" id="btn-home-record-mic" type="button">
+                  <span class="recording-dot"></span>
+                  <span>Record Live Mic Annotation</span>
+                  <span class="material-symbols-outlined mic-icon">mic</span>
+                </button>
+              </div>
+
+              <!-- Hardware Diagnostic Footer -->
+              <div class="diagnostic-footer">
+                <div class="diag-item">
+                  <span class="material-symbols-outlined">shield</span>
+                  <span>Local Buffer Cache Safe</span>
+                </div>
+                <span class="diag-est">Est. Render: 1.4s</span>
+              </div>
+            </div>
+
+            <!-- Input Acoustic Clarity Card -->
+            <div class="clarity-health-card">
+              <div class="clarity-header">
+                <span class="clarity-title">Input Acoustic Clarity</span>
+                <span class="clarity-metric">98.2 dB SNR</span>
+              </div>
+              <div class="clarity-bars-visualizer">
+                <div class="cbar h-40"></div>
+                <div class="cbar h-65"></div>
+                <div class="cbar h-50"></div>
+                <div class="cbar h-85"></div>
+                <div class="cbar h-95"></div>
+                <div class="cbar h-70"></div>
+                <div class="cbar h-55"></div>
+                <div class="cbar h-80"></div>
+                <div class="cbar h-45"></div>
+                <div class="cbar h-30"></div>
+                <div class="cbar h-20"></div>
+              </div>
+              <div class="clarity-footer">
+                <span>Freq: 20Hz - 20kHz</span>
+                <span>Zero Artifact Guard Enabled</span>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- BOTTOM: Full 12-Span Signature Obsidian Audio Studio & Master Player -->
+        <section class="master-obsidian-player-section">
+          <div class="obsidian-glow-ambient" aria-hidden="true"></div>
+          <div class="obsidian-player-content">
+            <!-- Left: Audio Track Identity -->
+            <div class="track-identity-column">
+              <div class="track-icon-box">
+                <span class="material-symbols-outlined">graphic_eq</span>
+              </div>
+              <div class="track-info">
+                <span class="track-badge">ACTIVE SYNTHESIZED MASTER</span>
+                <h4 class="track-title" id="master-player-title">Tamil Monolith Explanation</h4>
+                <span class="track-sub" id="master-player-sub">Subhashini IndicNeural · 48kHz WAV</span>
+              </div>
+            </div>
+
+            <!-- Center: Transport & Multi-Bar Waveform Scrubber -->
+            <div class="transport-center-column">
+              <div class="transport-buttons-row">
+                <button class="transport-btn" id="btn-master-replay" title="Rewind 10s" type="button">
+                  <span class="material-symbols-outlined">replay_10</span>
+                </button>
+                <button class="transport-btn" id="btn-master-prev" title="Previous Keyframe" type="button">
+                  <span class="material-symbols-outlined">skip_previous</span>
+                </button>
+                <button class="master-play-pause-btn" id="btn-master-play-pause" title="Play / Pause Master" type="button">
+                  <span class="material-symbols-outlined" id="master-play-icon">play_arrow</span>
+                </button>
+                <button class="transport-btn" id="btn-master-next" title="Next Keyframe" type="button">
+                  <span class="material-symbols-outlined">skip_next</span>
+                </button>
+                <button class="transport-btn" id="btn-master-fwd" title="Forward 30s" type="button">
+                  <span class="material-symbols-outlined">forward_30</span>
+                </button>
+              </div>
+
+              <!-- Multi-Bar Waveform Scrubber Container -->
+              <div class="waveform-scrubber-wrapper">
+                <span class="time-readout current-time" id="master-current-time">00:24</span>
+                <div class="master-waveform-bars" id="master-waveform-bars">
+                  <span class="wbar h-35 active"></span>
+                  <span class="wbar h-55 active"></span>
+                  <span class="wbar h-80 active"></span>
+                  <span class="wbar h-45 active"></span>
+                  <span class="wbar h-90 active"></span>
+                  <span class="wbar h-70 active"></span>
+                  <span class="wbar h-60 active"></span>
+                  <span class="wbar h-85 active"></span>
+                  <span class="wbar h-40 active"></span>
+                  <span class="wbar h-75 active"></span>
+                  <span class="wbar h-65 active"></span>
+                  <span class="wbar h-50 active"></span>
+                  <span class="wbar h-95 active"></span>
+                  <span class="wbar h-80 active"></span>
+                  <span class="wbar h-60 active"></span>
+                  <span class="wbar h-35 active"></span>
+                  <span class="wbar h-50"></span>
+                  <span class="wbar h-70"></span>
+                  <span class="wbar h-40"></span>
+                  <span class="wbar h-65"></span>
+                  <span class="wbar h-85"></span>
+                  <span class="wbar h-30"></span>
+                  <span class="wbar h-55"></span>
+                  <span class="wbar h-45"></span>
+                  <span class="wbar h-75"></span>
+                  <span class="wbar h-60"></span>
+                  <span class="wbar h-35"></span>
+                  <span class="wbar h-50"></span>
+                  <span class="wbar h-65"></span>
+                  <span class="wbar h-30"></span>
+                  <span class="wbar h-40"></span>
+                  <span class="wbar h-20"></span>
+                </div>
+                <span class="time-readout total-time" id="master-total-time">01:42</span>
+              </div>
+            </div>
+
+            <!-- Right: Actions & Volume & Download -->
+            <div class="player-actions-column">
+              <span class="format-pill-tag" id="master-format-tag">48kHz · Lossless</span>
+              <button class="transport-btn" id="btn-master-volume" title="Volume Control" type="button">
+                <span class="material-symbols-outlined">volume_up</span>
+              </button>
+              <button class="btn-master-download" id="btn-master-download" type="button">
+                <span class="material-symbols-outlined">download</span>
+                <span>Download Master</span>
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 2: AI RESPONSES — Live Host Simulator (Stitch 85639a4d) -->
+      <!-- ======================================================== -->
+      <div id="view-host-simulator" class="workspace-view">
+        <!-- Interactive View State Controller Header -->
+        <section class="controller-bar">
+          <!-- Host Application Selector -->
+          <div class="host-selector-group">
+            <span class="control-label">Target Host:</span>
+            <div class="host-tabs">
+              <button class="host-tab-btn active tab-btn" id="tab-claude" data-platform="claude" type="button">
+                <span class="tab-indicator-dot"></span>
+                <span>Claude 3.5 Sonnet (claude.ai)</span>
+              </button>
+              <button class="host-tab-btn tab-btn" id="tab-chatgpt" data-platform="chatgpt" type="button">
+                <span class="tab-indicator-dot"></span>
+                <span>ChatGPT (chatgpt.com)</span>
+              </button>
+              <button class="host-tab-btn tab-btn" id="tab-perplexity" data-platform="perplexity" type="button">
+                <span class="tab-indicator-dot"></span>
+                <span>Perplexity AI</span>
+              </button>
+              <button class="host-tab-btn tab-btn" id="tab-gemini" data-platform="gemini" type="button">
+                <span class="tab-indicator-dot"></span>
+                <span>Gemini Advanced</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Engine Telemetry & Inspector Modes -->
+          <div class="telemetry-bar">
+            <div class="telemetry-pill">
+              <span class="telemetry-dot"></span>
+              <span>DOM Observer: Active</span>
+              <span class="telemetry-divider"></span>
+              <span>48kHz Lossless</span>
+              <span class="telemetry-divider"></span>
+              <span class="telemetry-highlight">Bridge Connected</span>
+            </div>
+            <div class="layout-toggle-group">
+              <button class="layout-toggle-btn active" id="btn-split" type="button">
+                <span class="material-symbols-outlined">splitscreen</span>
+                <span>Side-by-Side</span>
+              </button>
+              <button class="layout-toggle-btn" id="btn-full" type="button">
+                <span class="material-symbols-outlined">fullscreen</span>
+                <span>Host Only</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Primary Workspace Canvas: 70/30 Split Grid -->
+        <div class="simulator-grid" id="simulator-layout">
+          <!-- LEFT 70% MAIN AREA: In-Page Live Host Simulator -->
+          <div class="host-column" id="host-column">
+            <!-- Simulated Desktop Browser Window Frame -->
+            <div class="browser-window-frame">
+              <!-- Browser Header / Omnibox -->
+              <div class="browser-chrome-header">
+                <div class="browser-window-dots">
+                  <span class="dot dot-close"></span>
+                  <span class="dot dot-min"></span>
+                  <span class="dot dot-max"></span>
+                </div>
+                <div class="browser-omnibox">
+                  <span class="material-symbols-outlined omnibox-lock">lock</span>
+                  <span class="omnibox-url" id="host-url">https://claude.ai/chat/c-89419b-acoustic-arch</span>
+                  <span class="omnibox-badge">Host Hooked</span>
+                </div>
+                <div class="browser-actions">
+                  <span class="material-symbols-outlined">bookmark</span>
+                  <span class="material-symbols-outlined">share</span>
+                </div>
+              </div>
+
+              <!-- Chat Viewport Canvas -->
+              <div class="chat-viewport">
+                <div id="messages-list" class="messages-list">
+                  <!-- User Message Segment -->
+                  <div class="message user-turn">
+                    <div class="avatar user-avatar">You</div>
+                    <div class="message-body">
+                      <div class="message-text">
+                        Explain the architectural difference between Monolithic and Distributed Microservices, focusing on latency bottlenecks.
+                      </div>
+                    </div>
+                  </div>
+
+                  <!-- Assistant Message Segment with Attached VoiceSave AI Layer -->
+                  <div class="message assistant-turn" data-message-author-role="assistant" data-ai-response="true">
+                    <div class="avatar ai-avatar" id="platform-icon">CLA</div>
+                    <div class="message-body">
+                      <div class="assistant-meta-row">
+                        <span class="assistant-model-title" id="platform-name">Claude 3.5 Sonnet</span>
+                        <span class="assistant-status-tag">streaming complete</span>
+                      </div>
+                      <div class="message-text markdown">
+                        <p>The foundational divergence between monolithic paradigms and distributed microservices resides in <strong>memory locality vs. network serialization</strong>. While monolithic engines handle intra-service communication via direct L1/L2 cache pointer passes, microservices introduce protocol transport overhead:</p>
+                        <div class="prose-table-cards">
+                          <div class="prose-card">
+                            <div class="prose-card-header">
+                              <span class="card-title">Monolith Inter-Call</span>
+                              <span class="card-metric">&lt; 0.05ms</span>
+                            </div>
+                            <p class="card-desc">In-process RAM pointer execution. Zero serialization, minimal thread context shifting, and atomic garbage-collection coordination.</p>
+                          </div>
+                          <div class="prose-card">
+                            <div class="prose-card-header">
+                              <span class="card-title">Microservice RPC</span>
+                              <span class="card-metric">1.8ms - 14.5ms</span>
+                            </div>
+                            <p class="card-desc">TCP handshake + TLS roundtrips + JSON/ProtoBuf marshaling + ingress gateway routing + proxy tail latency jitter.</p>
+                          </div>
+                        </div>
+                        <p>When compounding downstream fan-out across multiple bounded contexts, the <em>99th percentile tail latency</em> cascades exponentially unless mitigated by asynchronous event busses and speculative read replicas.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Chat Input Form & Scenario Presets -->
+                <div class="chat-input-container">
+                  <div class="presets-header">
+                    <span class="material-symbols-outlined">auto_awesome</span>
+                    <span>Presentation Multilingual Scenarios:</span>
+                  </div>
+                  <div class="presets-pills-row">
+                    <button class="preset-btn" data-query="What is an SSD?" data-lang="ta">
+                      <span>SSD (English → Tamil — தமிழ்)</span>
+                    </button>
+                    <button class="preset-btn" data-query="Explain polymorphism in Java in simple words." data-lang="hi">
+                      <span>Polymorphism (English → Hindi — हिन्दी)</span>
+                    </button>
+                    <button class="preset-btn" data-query="Explain cloud computing." data-lang="te">
+                      <span>Cloud (English → Telugu — తెలుగు)</span>
+                    </button>
+                    <button class="preset-btn" data-query="What is machine learning?" data-lang="kn">
+                      <span>ML (English → Kannada — ಕನ್ನಡ)</span>
+                    </button>
+                    <button class="preset-btn" data-query="Explain the internet." data-lang="ml">
+                      <span>Internet (English → Malayalam — മലയാളം)</span>
+                    </button>
+                    <button class="preset-btn" data-query="Explain quantum computing in simple words." data-lang="es">
+                      <span>Quantum (English → Spanish — Español)</span>
+                    </button>
+                  </div>
+
+                  <div class="chat-input-bar">
+                    <input type="text" id="demo-user-input" placeholder="Ask a question or select a multilingual preset above..." />
+                    <button id="btn-demo-send" class="btn-demo-send" type="button">
+                      <span>Send</span>
+                      <span class="material-symbols-outlined">send</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- RIGHT 30% COMPANION: Extension Popup Inspector -->
+          <div class="inspector-column" id="inspector-column">
+            <div class="companion-header">
+              <div class="companion-titles">
+                <h3 class="companion-title">Companion Popup</h3>
+                <span class="companion-sub">380px × 560px • Exact Extension Viewport</span>
+              </div>
+              <span class="scale-badge">1:1 Browser Scale</span>
+            </div>
+
+            <!-- Framed Chrome Extension Popup Container -->
+            <div class="companion-popup-frame">
+              <div class="companion-popup-header">
+                <div class="companion-brand">
+                  <div class="companion-brand-icon">
+                    <span class="material-symbols-outlined">graphic_eq</span>
+                  </div>
+                  <div>
+                    <h4 class="companion-brand-title">VoiceSave AI</h4>
+                    <span class="companion-brand-sub">Extension v2.4.1</span>
+                  </div>
+                </div>
+                <div class="companion-header-meta">
+                  <span class="companion-ready-tag">
+                    <span class="tag-dot"></span>
+                    <span>Ready</span>
+                  </span>
+                  <a href="../options/options.html" class="companion-settings-link" title="Settings">
+                    <span class="material-symbols-outlined">settings</span>
+                  </a>
+                </div>
+              </div>
+
+              <!-- Active Host Hook Summary Box -->
+              <div class="companion-hook-box">
+                <div class="hook-box-top">
+                  <span class="hook-box-label">Captured Chat Stream</span>
+                  <span class="hook-box-time">00:42 elapsed</span>
+                </div>
+                <p class="hook-box-text">
+                  "Architectural difference between Monolithic and Distributed Microservices, focusing on latency bottlenecks..."
+                </p>
+                <div class="hook-box-footer">
+                  <span class="material-symbols-outlined">tab</span>
+                  <span id="companion-source-tag">claude.ai/chat/c-89419b</span>
+                </div>
+              </div>
+
+              <!-- Target Dialect Picker -->
+              <div class="companion-field">
+                <label class="companion-field-label">Output Voice &amp; Dialect</label>
+                <div class="companion-dialect-picker">
+                  <div class="picker-left">
+                    <span class="material-symbols-outlined picker-icon">record_voice_over</span>
+                    <div class="picker-meta">
+                      <span class="picker-title">Tamil — தமிழ்</span>
+                      <span class="picker-desc">Pure Phonetic • Kural Engine</span>
+                    </div>
+                  </div>
+                  <span class="material-symbols-outlined">unfold_more</span>
+                </div>
+              </div>
+
+              <!-- Obsidian Audio Player Card -->
+              <div class="companion-obsidian-card">
+                <div class="card-header-row">
+                  <span class="card-header-title">Lossless Audio Buffer</span>
+                  <span class="card-header-status">READY</span>
+                </div>
+
+                <!-- Micro Mini Waveform Display -->
+                <div class="companion-mini-waveform">
+                  <span class="bar h-3 active"></span>
+                  <span class="bar h-6 active"></span>
+                  <span class="bar h-4 active"></span>
+                  <span class="bar h-7 active"></span>
+                  <span class="bar h-5 active"></span>
+                  <span class="bar h-8 active"></span>
+                  <span class="bar h-6 active"></span>
+                  <span class="bar h-4"></span>
+                  <span class="bar h-7"></span>
+                  <span class="bar h-3"></span>
+                  <span class="bar h-5"></span>
+                  <span class="bar h-6"></span>
+                  <span class="bar h-2"></span>
+                  <span class="bar h-4"></span>
+                  <span class="bar h-6"></span>
+                  <span class="bar h-3"></span>
+                </div>
+
+                <!-- Mini Scrubber Bar -->
+                <div class="companion-scrubber-row">
+                  <span>00:14</span>
+                  <div class="scrubber-track">
+                    <div class="scrubber-fill" style="width: 28%;"></div>
+                  </div>
+                  <span>01:28</span>
+                </div>
+
+                <!-- High Contrast Action Button -->
+                <button class="btn-companion-download" id="btn-companion-download" type="button">
+                  <span class="material-symbols-outlined">download</span>
+                  <span>Download Master MP3 (320k)</span>
+                </button>
+              </div>
+
+              <!-- Hotkey Guidance Capsule -->
+              <div class="companion-hotkey-box">
+                <span class="material-symbols-outlined">bolt</span>
+                <span>Pro Tip: Press <strong>Alt + S</strong> on any AI webpage to instantly speak</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 3: SCRIPT TO SPEECH — Long-Form Studio (Stitch b70d8fd1) -->
+      <!-- ======================================================== -->
+      <div id="view-script-studio" class="workspace-view">
+        <!-- Studio Header -->
+        <header class="studio-header">
+          <div class="studio-header-titles">
+            <div class="studio-badge-row">
+              <span class="studio-live-pill">
+                <span class="pulse-dot"></span>
+                <span>Live Studio Buffering</span>
+              </span>
+              <span>·</span>
+              <span class="studio-draft-num">Draft #42</span>
+              <span>·</span>
+              <span class="studio-engine-tag">Speech Synthesis Engine v4.1 (Lossless TTS)</span>
+            </div>
+            <h2 class="studio-title">Long Script Audio Studio</h2>
+          </div>
+          <div class="studio-actions-row">
+            <button class="studio-btn" id="btn-import-script" type="button">
+              <span class="material-symbols-outlined">upload_file</span>
+              <span>Import Text / Markdown</span>
+            </button>
+            <button class="studio-btn" id="btn-clear-script" type="button">
+              <span class="material-symbols-outlined">backspace</span>
+              <span>Clear Script</span>
+            </button>
+            <button class="studio-btn" id="btn-load-sample" type="button">
+              <span class="material-symbols-outlined">menu_book</span>
+              <span>Load Tech Lecture</span>
+            </button>
+            <button class="studio-btn primary" id="btn-synthesize-studio" type="button">
+              <span class="material-symbols-outlined">bolt</span>
+              <span>Translate &amp; Synthesize Audio</span>
+            </button>
+          </div>
+        </header>
+
+        <!-- Studio Grid 60/40 Split -->
+        <div class="studio-grid">
+          <!-- Left 60%: Script Editor Workspace -->
+          <section class="studio-editor-column">
+            <!-- Metadata & Heuristics Bar -->
+            <div class="editor-meta-bar">
+              <div class="meta-metrics">
+                <span class="metric-item">
+                  <span class="material-symbols-outlined">pin</span>
+                  <span id="stat-chars">2,840</span> chars
+                </span>
+                <span>·</span>
+                <span class="metric-item">
+                  <span id="stat-words">482</span> words
+                </span>
+                <span>·</span>
+                <span class="metric-item highlight">
+                  <span class="material-symbols-outlined">timer</span>
+                  <span>Est. ~04:18</span>
+                </span>
+                <span>·</span>
+                <span class="lang-detect-pill">
+                  <span class="pill-dot"></span>
+                  <span>Detected: EN-US</span>
+                </span>
+              </div>
+              <div class="code-bypass-pill">
+                <span class="material-symbols-outlined">code</span>
+                <span>Code lines (14–22)</span>
+                <label class="switch-label">
+                  <input type="checkbox" id="skip-code-toggle" checked />
+                  <span class="switch-slider"></span>
+                </label>
+                <span class="bypass-text">Bypass TTS</span>
+              </div>
+            </div>
+
+            <!-- SSML Speech Directives Bar -->
+            <div class="ssml-toolbar">
+              <span class="ssml-label">Insert Directive:</span>
+              <button class="ssml-btn" data-directive="[pause: 0.5s]" type="button">
+                <span class="material-symbols-outlined">hourglass_empty</span>
+                <span>+0.5s Pause</span>
+              </button>
+              <button class="ssml-btn" data-directive='[pronounce: "k8s" as "kubernetes"]' type="button">
+                <span class="material-symbols-outlined">record_voice_over</span>
+                <span>+ Pronunciation Guide</span>
+              </button>
+              <button class="ssml-btn" data-directive="[emphasis: pitch +10%]" type="button">
+                <span class="material-symbols-outlined">volume_up</span>
+                <span>+ Vocal Cadence</span>
+              </button>
+              <button class="ssml-btn" data-directive="[breath: relaxed]" type="button">
+                <span class="material-symbols-outlined">air</span>
+                <span>+ Natural Inhale</span>
+              </button>
+            </div>
+
+            <!-- Script Editor Box with Line Numbers Simulation -->
+            <div class="editor-container">
+              <div class="editor-top-bar">
+                <div class="file-name">
+                  <span class="material-symbols-outlined">article</span>
+                  <span>Lecture_Distributed_AI_Inference_Final.md</span>
+                </div>
+                <div class="autosave-tag">
+                  <span class="dot-green"></span>
+                  <span>Autosaved 1m ago</span>
+                </div>
+              </div>
+              <div class="editor-textarea-wrapper">
+                <div class="line-numbers" aria-hidden="true">
+                  1<br/>2<br/>3<br/>4<br/>5<br/>6<br/>7<br/>8<br/>9<br/>10<br/>11<br/>12<br/>13<br/>14<br/>15<br/>16<br/>17<br/>18<br/>19<br/>20<br/>21
+                </div>
+                <textarea id="script-editor" class="script-textarea" spellcheck="false"># Section I: The Paradigm of Edge Acoustic Latency
+
+Modern neural text-to-speech architectures rely on low-parameter quantized decoders running directly on device client threads. By decoupling synthesis from remote server round-trips, perceived vocal onset latency drops from 850 milliseconds down to sub-45 milliseconds.
+
+[pause: 0.5s]
+
+When executing large multilingual prompt scripts across languages such as Tamil (தமிழ்), Hindi (हिन्दी), Telugu (తెలుగు), and Kannada (ಕನ್ನಡ), phonetic preservation of technical terms remains essential. VoiceSave AI protects specialized symbols and ensures smooth natural prosody across all decoded chunks.</textarea>
+              </div>
+            </div>
+          </section>
+
+          <!-- Right 40%: Synthesis Acoustic Preview Chamber -->
+          <aside class="studio-preview-column">
+            <div class="preview-card">
+              <h3 class="preview-title">Acoustic Preview &amp; Export</h3>
+              <p class="preview-desc">Synthesize the entire long-form document into seamless multi-chunk lossless audio.</p>
+
+              <!-- Language & Voice Selectors -->
+              <div class="preview-controls">
+                <div class="preview-control-row">
+                  <label>Target Language</label>
+                  <select id="studio-language-select" class="preview-select">
+                    <option value="ta" selected>Tamil — தமிழ்</option>
+                    <option value="hi">Hindi — हिन्दी</option>
+                    <option value="te">Telugu — తెలుగు</option>
+                    <option value="kn">Kannada — ಕನ್ನಡ</option>
+                    <option value="ml">Malayalam — മലയാളம்</option>
+                    <option value="es">Spanish — Español</option>
+                  </select>
+                </div>
+                <div class="preview-control-row">
+                  <label>Audio Format</label>
+                  <select id="studio-format-select" class="preview-select">
+                    <option value="MP3" selected>MP3 (320kbps)</option>
+                    <option value="WAV">WAV (Lossless PCM)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Obsidian Preview HUD -->
+              <div class="studio-obsidian-hud">
+                <div class="hud-top">
+                  <span class="hud-track-name">Document Master Track</span>
+                  <span class="hud-status-badge">Standby</span>
+                </div>
+                <div class="hud-waveform-area">
+                  <div class="hud-bars">
+                    <span class="hbar h-2 active"></span>
+                    <span class="hbar h-5 active"></span>
+                    <span class="hbar h-8 active"></span>
+                    <span class="hbar h-4 active"></span>
+                    <span class="hbar h-9 active"></span>
+                    <span class="hbar h-6 active"></span>
+                    <span class="hbar h-7 active"></span>
+                    <span class="hbar h-3 active"></span>
+                    <span class="hbar h-8 active"></span>
+                    <span class="hbar h-5 active"></span>
+                    <span class="hbar h-4"></span>
+                    <span class="hbar h-6"></span>
+                    <span class="hbar h-3"></span>
+                    <span class="hbar h-7"></span>
+                    <span class="hbar h-2"></span>
+                  </div>
+                </div>
+                <div class="hud-time-row">
+                  <span id="studio-time-display">00:00 / 04:18</span>
+                  <span class="hud-codec">48 kHz Stereo</span>
+                </div>
+                <button class="btn-studio-download" id="btn-studio-download" type="button">
+                  <span class="material-symbols-outlined">download</span>
+                  <span>Synthesize &amp; Download MP3</span>
+                </button>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 4: RECORDINGS — Audio Archive (Stitch 3c2e6046) -->
+      <!-- ======================================================== -->
+      <div id="view-recordings" class="workspace-view">
+        <section class="recordings-header-section">
+          <div class="recordings-title-row">
+            <div>
+              <h2 class="recordings-main-title">Recordings &amp; Audio Archive</h2>
+              <p class="recordings-subtitle">
+                <span class="status-dot-green"></span>
+                <span id="recordings-count-desc">12 saved audio files · 4.8 MB stored</span>
+              </p>
+            </div>
+            <div class="recordings-badge-pill">
+              <span class="material-symbols-outlined text-coral">graphic_eq</span>
+              <span>Lossless HQ</span>
+            </div>
+          </div>
+
+          <!-- Search & Filter Controls -->
+          <div class="archive-search-bar">
+            <span class="material-symbols-outlined search-icon">search</span>
+            <input type="text" id="archiveSearchInput" placeholder="Search prompts, models, languages (e.g. Tamil, SSD, Polymorphism)..." />
+            <button class="btn-clear-search" id="clearSearchBtn" type="button" style="display: none;">
+              <span class="material-symbols-outlined">close</span>
+            </button>
+          </div>
+
+          <!-- Language Category Chips -->
+          <div class="archive-filter-chips">
+            <button class="archive-chip active" data-filter="all" type="button">All (<span id="count-all">12</span>)</button>
+            <button class="archive-chip" data-filter="ta" type="button">Tamil (<span id="count-ta">5</span>)</button>
+            <button class="archive-chip" data-filter="hi" type="button">Hindi (<span id="count-hi">4</span>)</button>
+            <button class="archive-chip" data-filter="en" type="button">English (<span id="count-en">3</span>)</button>
+          </div>
+
+          <!-- Storage Meter Card -->
+          <div class="storage-meter-card">
+            <div class="meter-icon-box">
+              <span class="material-symbols-outlined">cloud_sync</span>
+            </div>
+            <div class="meter-details">
+              <div class="meter-labels">
+                <span class="meter-title">Local Acoustic Buffer</span>
+                <span class="meter-quota">4.8 MB / 50 MB</span>
+              </div>
+              <div class="meter-progress-track">
+                <div class="meter-progress-fill" style="width: 10%;"></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Dynamic Recordings List Container -->
+        <div class="recordings-stream" id="recordingListContainer">
+          <!-- Populated dynamically via demo.js / SettingsStore -->
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 5: LANGUAGES & VOICES — Acoustic Catalog (Stitch 74beb1eb) -->
+      <!-- ======================================================== -->
+      <div id="view-languages" class="workspace-view">
+        <section class="languages-hero-section">
+          <div class="lang-hero-header">
+            <div>
+              <div class="lang-registry-badge">
+                <span>Indic &amp; Global Neural Registry</span>
+                <span class="badge-sep">·</span>
+                <span class="dot-coral"></span>
+                <span>v4.82 Phonetic Core</span>
+              </div>
+              <h1 class="lang-hero-title">Languages &amp; Acoustic Voices</h1>
+              <p class="lang-hero-desc">
+                Configure target dialects, calibrate vocal timbres, and govern default acoustic neural profiles across polyglot LLM capture streams.
+              </p>
+            </div>
+            <div class="lang-hero-actions">
+              <button class="lang-btn secondary" type="button">
+                <span class="material-symbols-outlined">download_for_offline</span>
+                <span>Offline Packs</span>
+              </button>
+              <button class="lang-btn primary" type="button">
+                <span class="material-symbols-outlined">add_circle</span>
+                <span>Deploy Custom Model</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Search & Filter Controls -->
+          <div class="lang-search-controls">
+            <div class="search-input-wrap">
+              <span class="material-symbols-outlined">search</span>
+              <input type="text" id="languageSearchInput" placeholder="Search by language, native script, country, or voice name (e.g., தமிழ், Subhashini, Aarav)..." />
+            </div>
+            <div class="category-pills-row" id="langFilterPills">
+              <button class="lang-filter-pill active" data-filter="all" type="button">All (24)</button>
+              <button class="lang-filter-pill" data-filter="indic" type="button">Indian Languages (10)</button>
+              <button class="lang-filter-pill" data-filter="global" type="button">Global Languages (14)</button>
+              <button class="lang-filter-pill" data-filter="byo" type="button">Custom BYO Models (2)</button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Active Preferred Defaults Hero Banner (Obsidian Acoustic Console) -->
+        <section class="lang-obsidian-hero-banner">
+          <div class="obsidian-glow-ambient" aria-hidden="true"></div>
+          <div class="banner-content">
+            <div class="banner-info">
+              <div class="banner-status-tag">
+                <span class="status-dot-green pulse"></span>
+                <span>Master Capture Engine Hooked</span>
+              </div>
+              <h2 class="banner-title">
+                Tamil — <span class="font-display italic text-coral-light">தமிழ்</span>
+                <span class="anchor-badge">Primary Indic Anchor</span>
+              </h2>
+              <p class="banner-desc">
+                Real-time transcript listener directs output to this dialect automatically whenever Indic Dravidian phonemes are intercepted by browser hooks.
+              </p>
+            </div>
+
+            <!-- Telemetry Specs Bento -->
+            <div class="specs-bento-grid">
+              <div class="spec-card">
+                <span class="spec-label">Active Timbre</span>
+                <span class="spec-val">Subhashini (IndicNeural-V4)</span>
+                <span class="spec-sub">Lossless 48kHz Warm</span>
+              </div>
+              <div class="spec-card">
+                <span class="spec-label">Stream Output</span>
+                <span class="spec-val">MP3 320 kbps</span>
+                <span class="spec-sub">CBR Stereo Mastering</span>
+              </div>
+              <div class="spec-card">
+                <span class="spec-label">Auto-Detection</span>
+                <span class="spec-val highlight-green">
+                  <span class="material-symbols-outlined check-icon">check_circle</span> Enabled
+                </span>
+                <span class="spec-sub">Latency &lt; 85ms</span>
+              </div>
+              <div class="spec-card">
+                <span class="spec-label">Pronunciation Map</span>
+                <span class="spec-val">1,840 Overrides</span>
+                <span class="spec-sub">Sanskrit &amp; Tech terms</span>
+              </div>
+            </div>
+
+            <!-- Quick Action on Hero -->
+            <div class="banner-action-col">
+              <button class="btn-hero-audition" id="heroAuditionBtn" type="button">
+                <span class="material-symbols-outlined">volume_up</span>
+                <span>Audition Default</span>
+              </button>
+              <button class="btn-hero-calibrate" type="button">
+                <span class="material-symbols-outlined">tune</span>
+                <span>Calibrate Master</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Two-Column Master Catalog Layout -->
+        <div class="catalog-grid">
+          <!-- LEFT: Indian Languages (10 Native Scripts) -->
+          <section class="catalog-col" id="indicCatalogSection">
+            <div class="catalog-header">
+              <div class="catalog-title-group">
+                <span class="material-symbols-outlined text-coral">translate</span>
+                <h3 class="catalog-heading">Indian Languages &amp; Scripts</h3>
+              </div>
+              <span class="count-tag">10 Native Scripts</span>
+            </div>
+            <div class="catalog-cards-stream" id="indicCardsContainer">
+              <!-- Dynamically populated from languages.js -->
+            </div>
+          </section>
+
+          <!-- RIGHT: Global Languages (14 Languages) -->
+          <section class="catalog-col" id="globalCatalogSection">
+            <div class="catalog-header">
+              <div class="catalog-title-group">
+                <span class="material-symbols-outlined text-coral">public</span>
+                <h3 class="catalog-heading">Global Languages &amp; International</h3>
+              </div>
+              <span class="count-tag">14 Dialects</span>
+            </div>
+            <div class="catalog-cards-stream" id="globalCardsContainer">
+              <!-- Dynamically populated from languages.js -->
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <!-- ======================================================== -->
+      <!-- VIEW 6: SETTINGS — Extension Options Hub (Stitch 0145d37f) -->
+      <!-- ======================================================== -->
+      <div id="view-settings" class="workspace-view">
+        <section class="settings-hero-header">
+          <div>
+            <span class="settings-badge-pill">Global Configuration &amp; Sync Mesh</span>
+            <h1 class="settings-title">Extension Settings &amp; Options Hub</h1>
+            <p class="settings-desc">
+              Manage local buffer caches, audio codecs, AI provider API hooks, and default target dialects.
+            </p>
+          </div>
+          <button class="settings-save-btn" id="btn-save-settings" type="button">
+            <span class="material-symbols-outlined">save</span>
+            <span>Save All Preferences</span>
+          </button>
+        </section>
+
+        <div class="settings-grid">
+          <!-- Column 1: Audio Engine & Output Format -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="material-symbols-outlined text-coral">audio_file</span>
+              <h3 class="card-title">Acoustic Encoding &amp; Quality</h3>
+            </div>
+            <div class="settings-field">
+              <label class="field-label">Default Export Format</label>
+              <div class="settings-radio-group">
+                <label class="radio-label">
+                  <input type="radio" name="opt-audio-format" value="MP3" checked />
+                  <span>MP3 (320kbps CBR Stereo — Universal Compatibility)</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="opt-audio-format" value="WAV" />
+                  <span>WAV (48kHz Lossless Linear PCM)</span>
+                </label>
+                <label class="radio-label">
+                  <input type="radio" name="opt-audio-format" value="M4A" />
+                  <span>M4A (Apple AAC Stereo)</span>
+                </label>
+              </div>
+            </div>
+            <div class="settings-field">
+              <label class="field-label">Default Speech Rate</label>
+              <div class="slider-row">
+                <input type="range" class="vs-range-input" id="opt-rate-slider" min="0.75" max="1.75" step="0.05" value="1.0" />
+                <span class="slider-val-tag" id="opt-rate-val">1.0x</span>
+              </div>
+            </div>
+            <div class="settings-field">
+              <label class="field-label">Default Speech Pitch</label>
+              <div class="slider-row">
+                <input type="range" class="vs-range-input" id="opt-pitch-slider" min="-4" max="4" step="1" value="0" />
+                <span class="slider-val-tag" id="opt-pitch-val">0 ST</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Column 2: Language & Translation Invariant -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="material-symbols-outlined text-coral">translate</span>
+              <h3 class="card-title">Default Dialect &amp; Translation</h3>
+            </div>
+            <div class="settings-field">
+              <label class="field-label">Primary Target Language</label>
+              <select class="settings-select" id="opt-target-lang">
+                <option value="ta" selected>Tamil — தமிழ் (Indic Dravidian)</option>
+                <option value="hi">Hindi — हिन्दी (Devanagari)</option>
+                <option value="te">Telugu — తెలుగు</option>
+                <option value="kn">Kannada — ಕನ್ನಡ</option>
+                <option value="ml">Malayalam — മലയാളം</option>
+                <option value="es">Spanish — Español</option>
+                <option value="fr">French — Français</option>
+                <option value="de">German — Deutsch</option>
+                <option value="en">English (US/UK)</option>
+              </select>
+            </div>
+            <div class="settings-field">
+              <label class="checkbox-label">
+                <input type="checkbox" id="opt-auto-translate" checked />
+                <span>Auto-translate captured AI responses when different from target</span>
+              </label>
+            </div>
+            <div class="settings-field">
+              <label class="checkbox-label">
+                <input type="checkbox" id="opt-phonetic-preservation" checked />
+                <span>Preserve technical terms &amp; code keywords in English phonemes</span>
+              </label>
+            </div>
+            <div class="settings-field">
+              <label class="checkbox-label">
+                <input type="checkbox" id="opt-auto-speak" />
+                <span>Auto-speak streaming AI response immediately upon completion</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Column 3: Buffer Storage & Local Cache -->
+          <div class="settings-card">
+            <div class="settings-card-header">
+              <span class="material-symbols-outlined text-coral">folder_zip</span>
+              <h3 class="card-title">Local Buffer Cache &amp; Storage</h3>
+            </div>
+            <div class="cache-status-box">
+              <div class="cache-meta">
+                <span class="cache-label">Active Storage Buffer:</span>
+                <span class="cache-val">4.8 MB / 50 MB Quota</span>
+              </div>
+              <div class="meter-progress-track">
+                <div class="meter-progress-fill" style="width: 10%;"></div>
+              </div>
+              <p class="cache-info">Zero Cloud Upload: All voice synthesis and audio encoding executes locally in your browser.</p>
+            </div>
+            <div class="settings-actions-group">
+              <button class="btn-cache-action secondary" id="btn-export-all-recordings" type="button">
+                <span class="material-symbols-outlined">download</span>
+                <span>Export Audio Archive (.zip)</span>
+              </button>
+              <button class="btn-cache-action danger" id="btn-clear-cache" type="button">
+                <span class="material-symbols-outlined">delete_sweep</span>
+                <span>Clear Local Cache</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+
+  <!-- Global Toast Notification Element -->
+  <div id="vs-toast" class="vs-toast" style="display: none;"></div>
+
+  <script src="../audio/lame.min.js"></script>
+  <script type="module" src="demo.js"></script>
+</body>
+</html>

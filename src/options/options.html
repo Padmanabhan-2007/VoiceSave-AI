@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VoiceSave AI - Extension Options &amp; Configuration</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="../utils/tokens.css" />
+  <link rel="stylesheet" href="options.css" />
+</head>
+<body class="options-body">
+  <!-- Desktop Top Header (64px) -->
+  <header class="options-topbar">
+    <div class="topbar-brand">
+      <div class="topbar-logo" aria-hidden="true">
+        <span class="material-symbols-outlined">graphic_eq</span>
+      </div>
+      <div class="topbar-brand-meta">
+        <div class="topbar-title-row">
+          <span class="topbar-app-name">VoiceSave AI</span>
+          <span class="topbar-status-pill">
+            <span class="pulse-dot"></span>
+            <span>Extension v2.4.1 Active</span>
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="topbar-actions">
+      <div class="topbar-shortcut-pill">
+        <span class="material-symbols-outlined">keyboard</span>
+        <span>⌘+Shift+S</span>
+      </div>
+      <a href="../demo/demo.html" class="topbar-action-btn secondary" title="Open Desktop Simulator">
+        <span class="material-symbols-outlined">devices</span>
+        <span>Open Live Simulator</span>
+      </a>
+      <a href="../popup/popup.html" target="_blank" class="topbar-action-btn secondary" title="Inspect Extension Popup">
+        <span class="material-symbols-outlined">extension</span>
+        <span>Inspect Popup (Compact)</span>
+      </a>
+      <div class="topbar-avatar" title="User Profile">
+        <span class="material-symbols-outlined">person</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Options Shell -->
+  <div class="options-shell">
+    <div class="options-container">
+      <!-- Status & Breadcrumb Header -->
+      <header class="page-header">
+        <div class="header-titles">
+          <div class="header-badge">
+            <span class="material-symbols-outlined">verified</span>
+            <span>Manifest V3 Engine • chrome://extensions/options</span>
+          </div>
+          <h1 class="page-title">Extension Options &amp; Configuration</h1>
+          <p class="page-desc">
+            Configure multilingual neural speech synthesis, host site DOM hooks, audio encoding bitrates, and keyboard shortcuts for the VoiceSave AI Chrome extension.
+          </p>
+        </div>
+        <div class="sync-mesh-card">
+          <div class="mesh-dot"></div>
+          <div class="mesh-text">
+            <span class="mesh-title">Active Sync Mesh</span>
+            <span class="mesh-desc">All changes sync automatically to <code>chrome.storage.sync</code></span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Save notification toast -->
+      <div id="save-toast" class="toast" style="display: none;">
+        ✓ Settings saved successfully
+      </div>
+
+      <!-- Main Workspace Split Panel -->
+      <div class="options-grid">
+        <!-- Navigation Sub-sidebar (Left 3.5 cols) -->
+        <aside class="sub-sidebar">
+          <div class="nav-card">
+            <a href="#general" class="nav-item active">
+              <div class="nav-item-left">
+                <span class="material-symbols-outlined">translate</span>
+                <span>General &amp; Language</span>
+              </div>
+              <span class="material-symbols-outlined arrow">chevron_right</span>
+            </a>
+            <a href="#speech" class="nav-item">
+              <div class="nav-item-left">
+                <span class="material-symbols-outlined">record_voice_over</span>
+                <span>Speech &amp; Neural TTS</span>
+              </div>
+              <span class="material-symbols-outlined arrow">chevron_right</span>
+            </a>
+            <a href="#domhooks" class="nav-item">
+              <div class="nav-item-left">
+                <span class="material-symbols-outlined">integration_instructions</span>
+                <span>Host Website Hooks</span>
+              </div>
+              <span class="material-symbols-outlined arrow">chevron_right</span>
+            </a>
+            <a href="#audio" class="nav-item">
+              <div class="nav-item-left">
+                <span class="material-symbols-outlined">equalizer</span>
+                <span>Audio Quality &amp; Formats</span>
+              </div>
+              <span class="material-symbols-outlined arrow">chevron_right</span>
+            </a>
+            <a href="#llm" class="nav-item">
+              <div class="nav-item-left">
+                <span class="material-symbols-outlined">cloud_sync</span>
+                <span>LLM &amp; Cloud Mode</span>
+              </div>
+              <span class="material-symbols-outlined arrow">chevron_right</span>
+            </a>
+          </div>
+
+          <!-- Diagnostic Micro Card -->
+          <div class="diagnostic-card">
+            <div class="diag-header">
+              <span class="diag-title">Local IndexedDB Cache</span>
+              <span class="diag-metric">48.2 MB / 512 MB</span>
+            </div>
+            <div class="diag-progress-bar">
+              <div class="diag-fill" style="width: 14%;"></div>
+            </div>
+            <div class="diag-footer">
+              <span>Acoustic Buffer TTL</span>
+              <span class="diag-val">30 Days</span>
+            </div>
+          </div>
+
+          <!-- Wave Core Card (Obsidian Surface) -->
+          <div class="wave-core-card">
+            <div class="wave-core-content">
+              <div class="wave-core-header">
+                <span class="material-symbols-outlined">graphic_eq</span>
+                <span>Acoustic Wave Core</span>
+              </div>
+              <h4 class="wave-core-title">48,000 Hz Lossless Stream</h4>
+              <p class="wave-core-desc">Wasm neural synthesis module active in extension sandbox.</p>
+            </div>
+          </div>
+        </aside>
+
+        <!-- Right Settings Panels (8.5 cols) -->
+        <main class="settings-content">
+          <!-- SECTION 1: General & Language -->
+          <section id="general" class="settings-card">
+            <div class="card-header">
+              <div>
+                <div class="card-eyebrow">
+                  <span class="material-symbols-outlined">public</span>
+                  <span>Linguistic Intelligence</span>
+                </div>
+                <h2 class="card-title">Multilingual &amp; Target Dialects</h2>
+                <p class="card-desc">Select your default listening language. AI responses are transcribed and translated before vocalization.</p>
+              </div>
+              <span class="phoneme-badge">24 Supported Dialects</span>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label-group">
+                <label for="setting-mylanguage">Primary Listening Language</label>
+                <span class="form-desc">Default language for audio generation and translation.</span>
+              </div>
+              <select id="setting-mylanguage" class="form-select">
+                <optgroup label="Priority Indian Languages">
+                  <option value="ta" selected>Tamil — தமிழ்</option>
+                  <option value="hi">Hindi — हिन्दी</option>
+                  <option value="te">Telugu — తెలుగు</option>
+                  <option value="kn">Kannada — ಕನ್ನಡ</option>
+                  <option value="ml">Malayalam — മലയാളം</option>
+                  <option value="bn">Bengali — বাংলা</option>
+                  <option value="mr">Marathi — मराठी</option>
+                  <option value="gu">Gujarati — ગુજરાતી</option>
+                  <option value="pa">Punjabi — ਪੰਜਾਬੀ</option>
+                  <option value="ur">Urdu — اردو</option>
+                  <option value="en">English (India)</option>
+                </optgroup>
+                <optgroup label="Global Languages">
+                  <option value="es">Spanish — Español</option>
+                  <option value="fr">French — Français</option>
+                  <option value="pt">Portuguese — Português</option>
+                  <option value="de">German — Deutsch</option>
+                  <option value="it">Italian — Italiano</option>
+                  <option value="nl">Dutch — Nederlands</option>
+                  <option value="ru">Russian — Русский</option>
+                  <option value="ja">Japanese — 日本語</option>
+                  <option value="ko">Korean — 한국어</option>
+                  <option value="zh">Chinese — 中文</option>
+                  <option value="ar">Arabic — العربية</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label-group">
+                <label for="setting-langmode">Translation Mode</label>
+                <span class="form-desc">How VoiceSave AI decides when to translate response text.</span>
+              </div>
+              <select id="setting-langmode" class="form-select">
+                <option value="auto" selected>Auto Detect (Smart Translation)</option>
+                <option value="always">Always Translate to Primary Language</option>
+                <option value="never">Never Translate (Speak in Original Language)</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label-group">
+                <label for="setting-transprovider">Translation Engine</label>
+                <span class="form-desc">Select translation backend provider.</span>
+              </div>
+              <select id="setting-transprovider" class="form-select">
+                <option value="demo" selected>Google Web Translation Engine (Free &amp; Built-In)</option>
+                <option value="openai">OpenAI Neural Translator (Requires API Key)</option>
+                <option value="google">Google Cloud Translation API (Requires API Key)</option>
+              </select>
+            </div>
+          </section>
+
+          <!-- SECTION 2: Speech & Neural Voice Engine -->
+          <section id="speech" class="settings-card">
+            <div class="card-header">
+              <div>
+                <div class="card-eyebrow">
+                  <span class="material-symbols-outlined">record_voice_over</span>
+                  <span>Acoustic Synthesis</span>
+                </div>
+                <h2 class="card-title">Speech &amp; Neural Voice Engine</h2>
+                <p class="card-desc">Control cadence, speech rate, and acoustic timbre for natural audio.</p>
+              </div>
+            </div>
+
+            <!-- Voice Selection & Filter -->
+            <div class="form-row">
+              <div class="form-label-group">
+                <label for="setting-voice-filter">Filter Voices by Language</label>
+                <span class="form-desc">Filter available system voices for optimal timbre.</span>
+              </div>
+              <select id="setting-voice-filter" class="form-select">
+                <option value="all" selected>All Installed Voices</option>
+                <option value="ta">Tamil (ta)</option>
+                <option value="hi">Hindi (hi)</option>
+                <option value="te">Telugu (te)</option>
+                <option value="kn">Kannada (kn)</option>
+                <option value="ml">Malayalam (ml)</option>
+                <option value="en">English (en)</option>
+              </select>
+            </div>
+
+            <div class="form-row">
+              <div class="form-label-group">
+                <label for="setting-voice">Voice Model</label>
+                <span class="form-desc">Select installed synthesizer voice.</span>
+              </div>
+              <select id="setting-voice" class="form-select">
+                <option value="">Default System Voice</option>
+              </select>
+            </div>
+
+            <!-- Sliders -->
+            <div class="sliders-grid">
+              <div class="slider-box">
+                <div class="slider-header">
+                  <label for="setting-speed">Speech Rate</label>
+                  <span id="val-speed" class="slider-val">1.0x</span>
+                </div>
+                <input type="range" id="setting-speed" min="0.5" max="2.0" step="0.1" value="1.0" class="styled-range" />
+              </div>
+
+              <div class="slider-box">
+                <div class="slider-header">
+                  <label for="setting-pitch">Vocal Pitch</label>
+                  <span id="val-pitch" class="slider-val">1.0</span>
+                </div>
+                <input type="range" id="setting-pitch" min="0.5" max="1.5" step="0.1" value="1.0" class="styled-range" />
+              </div>
+
+              <div class="slider-box">
+                <div class="slider-header">
+                  <label for="setting-volume">Output Volume</label>
+                  <span id="val-volume" class="slider-val">100%</span>
+                </div>
+                <input type="range" id="setting-volume" min="0.0" max="1.0" step="0.05" value="1.0" class="styled-range" />
+              </div>
+            </div>
+
+            <div class="test-voice-row">
+              <button id="btn-test-voice" class="btn-secondary-action" type="button">
+                <span class="material-symbols-outlined">volume_up</span>
+                <span>🔊 Test Voice</span>
+              </button>
+            </div>
+          </section>
+
+          <!-- SECTION 3: Host Website Hooks -->
+          <section id="domhooks" class="settings-card">
+            <div class="card-header">
+              <div>
+                <div class="card-eyebrow">
+                  <span class="material-symbols-outlined">integration_instructions</span>
+                  <span>DOM Injection</span>
+                </div>
+                <h2 class="card-title">Host Website Hooks &amp; Code Handling</h2>
+                <p class="card-desc">Configure in-page toolbar attachment on ChatGPT, Claude, Gemini, and Perplexity.</p>
+              </div>
+            </div>
+
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <label for="setting-enabled">Enable VoiceSave AI Globally</label>
+                <p class="toggle-desc">Master switch to enable or disable voice injection and audio generation across all sites.</p>
+              </div>
+              <label class="switch-toggle">
+                <input type="checkbox" id="setting-enabled" checked />
+                <span class="slider-round"></span>
+              </label>
+            </div>
+
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <label for="setting-autoinject">Automatic In-Page Injection</label>
+                <p class="toggle-desc">Automatically detect AI streaming responses and dock the obsidian voice toolbar.</p>
+              </div>
+              <label class="switch-toggle">
+                <input type="checkbox" id="setting-autoinject" checked />
+                <span class="slider-round"></span>
+              </label>
+            </div>
+
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <label for="setting-readcode">Read Code Blocks Aloud</label>
+                <p class="toggle-desc">When disabled (recommended), code blocks (```...```) are bypassed for smooth vocal prosody.</p>
+              </div>
+              <label class="switch-toggle">
+                <input type="checkbox" id="setting-readcode" />
+                <span class="slider-round"></span>
+              </label>
+            </div>
+          </section>
+
+          <!-- SECTION 4: Audio Quality & Formats -->
+          <section id="audio" class="settings-card">
+            <div class="card-header">
+              <div>
+                <div class="card-eyebrow">
+                  <span class="material-symbols-outlined">equalizer</span>
+                  <span>Audio Bitstream</span>
+                </div>
+                <h2 class="card-title">Audio Quality &amp; Formats</h2>
+                <p class="card-desc">Select encoding container and quality bitrates for offline MP3 and WAV export.</p>
+              </div>
+            </div>
+
+            <div class="format-cards-grid">
+              <div class="format-card active" data-fmt="MP3">
+                <div class="fmt-top">
+                  <span class="fmt-name">MP3</span>
+                  <span class="fmt-badge">Universal</span>
+                </div>
+                <p class="fmt-desc">MPEG-1 Audio Layer III encoded at 320 kbps. Maximum cross-device compatibility.</p>
+              </div>
+
+              <div class="format-card" data-fmt="WAV">
+                <div class="fmt-top">
+                  <span class="fmt-name">WAV</span>
+                  <span class="fmt-badge">Lossless</span>
+                </div>
+                <p class="fmt-desc">16-bit Linear PCM uncompressed audio. Studio master fidelity with zero compression artifacts.</p>
+              </div>
+
+              <div class="format-card" data-fmt="M4A">
+                <div class="fmt-top">
+                  <span class="fmt-name">M4A</span>
+                  <span class="fmt-badge">AAC</span>
+                </div>
+                <p class="fmt-desc">MPEG-4 AAC Container Audio. High compression efficiency in supported browsers.</p>
+              </div>
+            </div>
+
+            <select id="setting-format" style="display: none;">
+              <option value="MP3" selected>MP3</option>
+              <option value="WAV">WAV</option>
+              <option value="M4A">M4A</option>
+            </select>
+          </section>
+
+          <!-- SECTION 5: LLM & Cloud Mode -->
+          <section id="llm" class="settings-card">
+            <div class="card-header">
+              <div>
+                <div class="card-eyebrow">
+                  <span class="material-symbols-outlined">cloud_sync</span>
+                  <span>Cloud Intelligence</span>
+                </div>
+                <h2 class="card-title">LLM &amp; Cloud Mode Provider</h2>
+                <p class="card-desc">Configure standalone Quick Ask generation when using the extension popup.</p>
+              </div>
+            </div>
+
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <label for="setting-demomode">Demo &amp; Offline Mode</label>
+                <p class="toggle-desc">When enabled, intelligent educational response generators and free web translation run with zero API key configuration.</p>
+              </div>
+              <label class="switch-toggle">
+                <input type="checkbox" id="setting-demomode" checked />
+                <span class="slider-round"></span>
+              </label>
+            </div>
+
+            <div id="api-config-block" class="api-config-container" style="display: none;">
+              <div class="form-row">
+                <div class="form-label-group">
+                  <label for="setting-llmprovider">LLM Provider</label>
+                </div>
+                <select id="setting-llmprovider" class="form-select">
+                  <option value="openai">OpenAI (GPT-4o)</option>
+                  <option value="anthropic">Anthropic (Claude 3.5 Sonnet)</option>
+                  <option value="google">Google Gemini (Gemini 1.5 Pro)</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="form-label-group">
+                  <label for="setting-llmapikey">LLM API Key</label>
+                </div>
+                <input type="password" id="setting-llmapikey" class="form-input" placeholder="sk-..." />
+              </div>
+
+              <div class="form-row">
+                <div class="form-label-group">
+                  <label for="setting-ttsprovider">Cloud Neural TTS Engine</label>
+                </div>
+                <select id="setting-ttsprovider" class="form-select">
+                  <option value="browser" selected>Browser Native SpeechSynthesis</option>
+                  <option value="elevenlabs">ElevenLabs Neural Voice</option>
+                  <option value="google-cloud">Google Cloud Text-to-Speech</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="form-label-group">
+                  <label for="setting-ttsapikey">TTS Engine API Key</label>
+                </div>
+                <input type="password" id="setting-ttsapikey" class="form-input" placeholder="API Key (optional)" />
+              </div>
+            </div>
+          </section>
+
+          <!-- Save / Reset Sticky Action Bar -->
+          <div class="options-actions-bar">
+            <button id="btn-save" class="btn-save-primary" type="button">
+              <span class="material-symbols-outlined">save</span>
+              <span>Save Changes</span>
+            </button>
+            <button id="btn-reset" class="btn-reset-secondary" type="button">
+              <span class="material-symbols-outlined">restart_alt</span>
+              <span>Reset to Defaults</span>
+            </button>
+          </div>
+        </main>
+      </div>
+    </div>
+  </div>
+
+  <script src="../audio/lame.min.js"></script>
+  <script type="module" src="options.js"></script>
+</body>
+</html>
