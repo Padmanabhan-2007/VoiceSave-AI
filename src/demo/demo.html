@@ -8,14 +8,14 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400..700;1,6..72,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="../utils/tokens.css" />
-  <link rel="stylesheet" href="../content/toolbar.css" />
-  <link rel="stylesheet" href="demo.css" />
+  <link rel="stylesheet" href="/src/utils/tokens.css" />
+  <link rel="stylesheet" href="/src/content/toolbar.css" />
+  <link rel="stylesheet" href="/src/demo/demo.css" />
 </head>
 <body class="demo-body">
   <!-- Desktop Fixed Top Navigation Bar (64px) -->
   <header class="desktop-topbar">
-    <div class="topbar-brand">
+    <a href="/" class="topbar-brand" style="text-decoration: none; color: inherit; cursor: pointer;" title="Back to VoiceSave AI Landing Page">
       <div class="topbar-logo" aria-hidden="true">
         <span class="material-symbols-outlined">graphic_eq</span>
       </div>
@@ -28,7 +28,7 @@
           </span>
         </div>
       </div>
-    </div>
+    </a>
 
     <!-- Active Channel Live Indicator in Topbar -->
     <div class="topbar-center-info">
@@ -45,7 +45,7 @@
         <span class="material-symbols-outlined">keyboard</span>
         <span>⌘+Shift+S</span>
       </div>
-      <a href="../popup/popup.html" target="_blank" class="topbar-action-btn secondary" id="btn-inspect-popup" title="Open Extension Popup">
+      <a href="/src/popup/popup.html" target="_blank" class="topbar-action-btn secondary" id="btn-inspect-popup" title="Open Extension Popup">
         <span class="material-symbols-outlined">extension</span>
         <span>Popup (400px)</span>
       </a>
@@ -1353,7 +1353,7 @@ When executing large multilingual prompt scripts across languages such as Tamil 
   <!-- Global Toast Notification Element -->
   <div id="vs-toast" class="vs-toast" style="display: none;"></div>
 
-  <script src="../audio/lame.min.js"></script>
-  <script type="module" src="demo.js"></script>
+  <script src="/src/audio/lame.min.js"></script>
+  <script type="module" src="/src/demo/demo.js"></script>
 </body>
 </html>

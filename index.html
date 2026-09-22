@@ -1,0 +1,1153 @@
+<!DOCTYPE html>
+<html class="scroll-smooth" lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta content="web_standard" name="shell-type" />
+  <title>VoiceSave AI — Turn AI Answers into Spoken, Downloadable Audio</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+  <style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "surface-tint": "#924a31",
+            "on-secondary-fixed-variant": "#484644",
+            "background": "#faf9f5",
+            "surface-variant": "#e3e2df",
+            "error-container": "#ffdad6",
+            "inverse-primary": "#ffb59d",
+            "on-error-container": "#93000a",
+            "surface": "#faf9f5",
+            "secondary-fixed": "#e6e2de",
+            "surface-dim": "#dbdad6",
+            "primary-container": "#ad5f45",
+            "on-primary": "#ffffff",
+            "surface-container-low": "#f4f4f0",
+            "primary-fixed-dim": "#ffb59d",
+            "on-background": "#1b1c1a",
+            "primary": "#8f482f",
+            "tertiary-container": "#78746b",
+            "outline": "#87736d",
+            "on-secondary-container": "#666461",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#e6e2de",
+            "tertiary-fixed-dim": "#cbc6bb",
+            "tertiary": "#5f5c53",
+            "primary-fixed": "#ffdbd0",
+            "on-error": "#ffffff",
+            "secondary-fixed-dim": "#cac6c2",
+            "on-tertiary-fixed-variant": "#49473f",
+            "on-surface": "#1b1c1a",
+            "on-primary-fixed-variant": "#75331c",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed": "#e8e2d7",
+            "on-tertiary-fixed": "#1d1b15",
+            "inverse-on-surface": "#f2f1ed",
+            "outline-variant": "#dac1ba",
+            "surface-container-highest": "#e3e2df",
+            "secondary": "#605e5b",
+            "error": "#ba1a1a",
+            "surface-container": "#efeeea",
+            "surface-bright": "#faf9f5",
+            "on-tertiary-container": "#fffbff",
+            "on-surface-variant": "#54433e",
+            "on-primary-container": "#fffbff",
+            "inverse-surface": "#2f312e",
+            "on-tertiary": "#ffffff",
+            "on-secondary-fixed": "#1c1b19",
+            "on-primary-fixed": "#390c00",
+            "surface-container-high": "#e9e8e4"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-xs": "0.25rem",
+            "space-lg": "1rem",
+            "margin-desktop": "2rem",
+            "space-sm": "0.5rem",
+            "gutter": "1rem",
+            "margin": "1rem",
+            "gutter-desktop": "1.5rem",
+            "space-xl": "1.25rem",
+            "space-md": "0.75rem"
+          },
+          fontFamily: {
+            "headline-lg": ["Newsreader", "serif"],
+            "headline-md": ["Newsreader", "serif"],
+            "label-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "display": ["Newsreader", "serif"],
+            "display-mobile": ["Newsreader", "serif"],
+            "headline-sm": ["Newsreader", "serif"],
+            "headline-lg-mobile": ["Newsreader", "serif"],
+            "label-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          fontSize: {
+            "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.015em", "fontWeight": "400" }],
+            "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "500" }],
+            "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "700" }],
+            "display": ["48px", { "lineHeight": "56px", "letterSpacing": "-0.02em", "fontWeight": "400" }],
+            "display-mobile": ["34px", { "lineHeight": "42px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "headline-sm": ["20px", { "lineHeight": "28px", "fontWeight": "500" }],
+            "headline-lg-mobile": ["26px", { "lineHeight": "34px", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "label-lg": ["14px", { "lineHeight": "20px", "letterSpacing": "0.01em", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "24px", "fontWeight": "400" }],
+            "body-lg": ["18px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "400" }],
+            "label-md": ["12px", { "lineHeight": "16px", "letterSpacing": "0.02em", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "20px", "fontWeight": "400" }]
+          }
+        }
+      }
+    };
+  </script>
+</head>
+<body class="bg-surface font-body-md text-on-surface antialiased min-h-screen selection:bg-primary-fixed selection:text-on-primary-fixed">
+
+  <!-- ========================================== -->
+  <!-- HEADER & NAVIGATION                        -->
+  <!-- ========================================== -->
+  <header class="fixed top-0 inset-x-0 z-50 bg-surface/85 backdrop-blur-xl shadow-[0_1px_8px_rgba(20,20,19,0.04)]">
+    <div class="h-20 max-w-7xl mx-auto px-6 lg:px-12 flex items-center justify-between gap-space-lg">
+      <div class="flex items-center gap-space-md">
+        <img alt="Brand logo" class="h-8 w-auto object-contain rounded-md" src="assets/icon-48.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1WitH5PUYct2zju30NcXS0i2FlIUxyxv_zuHApMMPYsQhLJLttHBXapBwS2NJj6UFvfocMiMfwLdvje950lD8ABK_qibYmNKmAxPhpi8oZ5FYEgQbEvjXpZEHFKj9uommoguRm_aRg6cRue0Hk5JKV2R4qMS4VZuaAYVPTwqm0NNHzGELDYXx03siO7kRrW1XJESv04mc0e-cx9N6nFugj39uFR87GVOVrgaBBnrkuDzONjE-JaoMJf2ZkK'" />
+        <a class="flex items-baseline gap-space-xs font-headline-md text-headline-md tracking-tight text-on-surface hover:text-primary transition-colors" href="#">
+          <span class="italic font-normal">VoiceSave</span>
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold ml-1">AI</span>
+        </a>
+      </div>
+
+      <!-- Navigation Links -->
+      <nav class="hidden xl:flex items-center gap-space-xl" data-active-classes="text-primary font-semibold">
+        <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors py-1" href="#features">Features</a>
+        <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors py-1" href="#how-it-works">How It Works</a>
+        <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors py-1" href="#languages">Languages</a>
+        <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors py-1" href="#script-to-speech">Script to Speech</a>
+        <a class="font-label-lg text-label-lg text-on-surface-variant hover:text-on-surface transition-colors py-1" href="#supported-ai">Supported AI</a>
+      </nav>
+
+      <!-- Action Buttons -->
+      <div class="flex items-center gap-space-md">
+        <a class="hidden sm:inline-flex items-center justify-center px-space-lg py-space-sm rounded-xl font-label-lg text-label-lg bg-secondary-container text-on-surface hover:bg-surface-variant transition-colors" href="#install">
+          Get Chrome Extension
+        </a>
+        <a class="inline-flex items-center justify-center px-space-lg py-space-sm rounded-xl font-label-lg text-label-lg bg-primary text-on-primary shadow-[0_1px_3px_rgba(20,20,19,0.1)] hover:bg-primary-container transition-all" href="/home" title="Launch VoiceSave AI Studio">
+          Launch VoiceSave AI
+        </a>
+        <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center ml-space-xs shadow-sm">
+          <span class="material-symbols-outlined text-on-primary text-[18px]">person</span>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========================================== -->
+  <!-- MAIN PAGE CONTENT                          -->
+  <!-- ========================================== -->
+  <main class="w-full pt-20 bg-surface">
+    <div class="flex flex-col w-full">
+
+      <!-- SECTION 1: HERO SECTION -->
+      <section class="relative w-full pt-10 pb-20 overflow-hidden">
+        <!-- Subtle Ambient Glow -->
+        <div class="absolute top-12 left-1/2 -translate-x-1/2 w-[720px] h-[360px] bg-gradient-to-tr from-primary-fixed/30 via-primary/5 to-transparent blur-3xl pointer-events-none rounded-full"></div>
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 relative z-10">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            
+            <!-- Left Editorial Column -->
+            <div class="lg:col-span-6 flex flex-col items-start space-y-6">
+              <div class="inline-flex items-center gap-space-sm px-space-md py-1.5 rounded-full bg-surface-container text-on-surface-variant font-label-md text-label-md shadow-sm">
+                <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                <span class="tracking-wide">Universal Voice &amp; Audio Layer for the AI Web</span>
+              </div>
+              <h1 class="font-display text-display text-on-surface leading-[1.08] tracking-tight">
+                Turn AI responses into voice you can <span class="italic text-primary font-normal">save</span>.
+              </h1>
+              <p class="font-body-lg text-body-lg text-secondary leading-relaxed max-w-xl">
+                Transform answers from ChatGPT, Claude, Gemini, and Perplexity — alongside custom long-form scripts — into natural multilingual speech, studio-grade recordings, and instant lossless audio exports.
+              </p>
+              <div class="flex flex-wrap items-center gap-space-md pt-2 w-full sm:w-auto">
+                <a class="inline-flex items-center justify-center gap-space-sm px-7 py-3.5 rounded-xl font-label-lg text-label-lg bg-primary text-on-primary shadow-md hover:bg-primary-container transition-all group" href="/home">
+                  <span>Launch VoiceSave AI</span>
+                  <span class="material-symbols-outlined text-[18px] group-hover:translate-x-0.5 transition-transform">keyboard_return</span>
+                </a>
+                <a class="inline-flex items-center justify-center gap-space-sm px-6 py-3.5 rounded-xl font-label-lg text-label-lg bg-surface-container-high text-on-surface hover:bg-surface-variant transition-colors shadow-sm" href="#install">
+                  <span class="material-symbols-outlined text-[20px] text-primary">extension</span>
+                  <span>Get Chrome Extension</span>
+                </a>
+              </div>
+              <div class="pt-4 flex flex-wrap items-center gap-x-6 gap-y-2 text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+                <div class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-primary text-[15px]">bolt</span>
+                  <span>Zero-latency DOM hook</span>
+                </div>
+                <span class="text-outline-variant font-light hidden sm:inline">•</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-primary text-[15px]">translate</span>
+                  <span>24 Indian &amp; Global Dialects</span>
+                </div>
+                <span class="text-outline-variant font-light hidden sm:inline">•</span>
+                <div class="flex items-center gap-1.5">
+                  <span class="material-symbols-outlined text-primary text-[15px]">graphic_eq</span>
+                  <span>Lossless 320k MP3 / WAV</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Hero Product Visualization (Obsidian Luxury Console) -->
+            <div class="lg:col-span-6 w-full">
+              <div class="relative rounded-2xl bg-inverse-surface text-inverse-on-surface p-6 sm:p-7 shadow-2xl overflow-hidden border border-white/5">
+                <!-- Inner Sheen -->
+                <div class="absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent"></div>
+                
+                <!-- Panel Header -->
+                <div class="flex items-center justify-between pb-5">
+                  <div class="flex items-center gap-space-sm">
+                    <span class="w-3 h-3 rounded-full bg-primary"></span>
+                    <span class="font-headline-sm text-headline-sm text-inverse-on-surface italic">Captured Thought from Claude 3.5</span>
+                  </div>
+                  <span class="inline-flex items-center gap-1 font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed-dim bg-white/5 px-2.5 py-1 rounded-md">
+                    <span class="w-1.5 h-1.5 rounded-full bg-primary-fixed-dim animate-ping"></span>
+                    DOM Synced (&lt;14ms)
+                  </span>
+                </div>
+
+                <!-- Captured LLM Prompt & Response Card -->
+                <div class="rounded-xl bg-[#23211e] p-4 sm:p-5 space-y-3 mb-5 shadow-inner border border-white/5">
+                  <div class="flex items-center justify-between text-secondary-fixed-dim font-label-md text-label-md">
+                    <span class="flex items-center gap-1.5">
+                      <span class="material-symbols-outlined text-[16px] text-primary-fixed-dim">psychology</span>
+                      Prompt: Quantum Superposition Analogy
+                    </span>
+                    <span class="text-tertiary-fixed-dim font-mono text-[11px]">Anthropic claude-3-5-sonnet</span>
+                  </div>
+                  <p class="font-body-md text-body-md text-surface-container leading-relaxed">
+                    "Think of a spinning coin. While spinning, it is not merely heads or tails — it embodies a dynamic fluid superposition of every orientation until observed..."
+                  </p>
+                </div>
+
+                <!-- Inline Transmutation Strip -->
+                <div class="rounded-xl bg-[#1d1b19] p-4 mb-5 space-y-2 border border-white/5">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                      <span class="font-label-sm text-label-sm uppercase tracking-wider text-primary-fixed-dim font-bold">Transmutation</span>
+                      <span class="text-secondary-fixed-dim font-label-md text-label-md">English → Tamil (தமிழ்)</span>
+                    </div>
+                    <span class="text-[11px] font-mono text-secondary-fixed-dim">Neural Dravidian Engine</span>
+                  </div>
+                  <p class="font-body-md text-body-md text-primary-fixed font-medium leading-relaxed tracking-normal" id="hero-transmuted-text">
+                    "சுழலும் நாணயம் போல சிந்தியுங்கள். அது சுழலும் வரை வெறும் பூவோ தலையோ அல்ல — அனைத்து சாத்தியக்கூறுகளின் உயிருள்ள நிலை..."
+                  </p>
+                </div>
+
+                <!-- Embedded Acoustic Player -->
+                <div class="rounded-xl bg-[#23211e] p-4 sm:p-5 space-y-3 border border-white/5">
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-space-sm">
+                      <button id="hero-play-btn" class="w-9 h-9 rounded-full bg-primary text-on-primary flex items-center justify-center hover:bg-primary-container transition-transform active:scale-95 shadow-md" type="button" title="Play Tamil Neural Audio">
+                        <span class="material-symbols-outlined text-[20px]" id="hero-play-icon">play_arrow</span>
+                      </button>
+                      <div class="flex flex-col">
+                        <span class="font-label-md text-label-md text-inverse-on-surface">Tamil Neural Voice (Ananya-HQ)</span>
+                        <span class="font-mono text-[11px] text-secondary-fixed-dim">48kHz · Lossless 320kbps MP3</span>
+                      </div>
+                    </div>
+                    <span class="font-mono text-label-sm text-label-sm text-primary-fixed-dim tracking-wider" id="hero-audio-time">01:14 / 02:41</span>
+                  </div>
+
+                  <!-- Animated Waveform Simulation -->
+                  <div class="w-full flex items-center gap-1 h-8 px-1" id="hero-waveform">
+                    <div class="w-1 bg-primary h-3 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary h-5 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary h-7 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary h-4 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary h-6 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary h-8 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary h-5 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary h-7 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary h-3 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary h-6 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary-fixed-dim h-8 rounded-full transition-all"></div>
+                    <div class="w-1 bg-primary-fixed-dim h-4 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-5 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-3 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-6 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-4 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-7 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-3 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-2 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-5 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-3 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-2 rounded-full transition-all"></div>
+                    <div class="w-1 bg-secondary h-4 rounded-full transition-all"></div>
+                  </div>
+
+                  <!-- Action Bar -->
+                  <div class="pt-2 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
+                    <div class="flex items-center gap-1.5">
+                      <span class="px-2.5 py-1 rounded-md bg-white/5 font-label-sm text-label-sm text-secondary-fixed-dim">Speak</span>
+                      <span class="px-2.5 py-1 rounded-md bg-white/5 font-label-sm text-label-sm text-secondary-fixed-dim">Translate</span>
+                      <span class="px-2.5 py-1 rounded-md bg-white/5 font-label-sm text-label-sm text-secondary-fixed-dim">Record Buffer</span>
+                    </div>
+                    <button id="hero-download-btn" class="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-primary hover:bg-primary-container text-on-primary font-label-sm text-label-sm shadow-md transition-colors" type="button">
+                      <span class="material-symbols-outlined text-[16px]">download</span>
+                      <span>Download Audio (MP3 · 3.8 MB)</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: 7-STEP CONTINUOUS PIPELINE ('How It Works') -->
+      <section id="how-it-works" class="w-full py-16 bg-surface-container-low border-y border-outline-variant/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-10">
+          <div class="max-w-3xl space-y-3">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Continuous Stream Architecture</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">From Thought to Stored Audio in Seven Deliberate Beats</h2>
+            <p class="font-body-md text-body-md text-secondary leading-relaxed">
+              A unified acoustic pipeline architected to run seamlessly underneath modern LLMs, operating purely in-memory without server audio storage leaks.
+            </p>
+          </div>
+
+          <!-- Horizontal 7-Step Grid Strip -->
+          <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-7 gap-3 pt-4">
+            <!-- Beat 01 -->
+            <div class="p-4 rounded-xl bg-surface flex flex-col justify-between shadow-sm space-y-4 border border-outline-variant/20 hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-label-sm text-primary">01</span>
+                <span class="material-symbols-outlined text-[20px] text-secondary">input</span>
+              </div>
+              <div>
+                <h3 class="font-label-lg text-label-lg text-on-surface font-semibold">AI Response / Text</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Token intercept via DOM hook or raw studio paste.</p>
+              </div>
+              <div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+                <div class="bg-primary h-full w-full"></div>
+              </div>
+            </div>
+
+            <!-- Beat 02 -->
+            <div class="p-4 rounded-xl bg-surface flex flex-col justify-between shadow-sm space-y-4 border border-outline-variant/20 hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-label-sm text-primary">02</span>
+                <span class="material-symbols-outlined text-[20px] text-secondary">language</span>
+              </div>
+              <div>
+                <h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Language Select</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Autodetect or pick from 24 Indic &amp; world tongues.</p>
+              </div>
+              <div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+                <div class="bg-primary h-full w-full"></div>
+              </div>
+            </div>
+
+            <!-- Beat 03 -->
+            <div class="p-4 rounded-xl bg-surface flex flex-col justify-between shadow-sm space-y-4 border border-outline-variant/20 hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-label-sm text-primary">03</span>
+                <span class="material-symbols-outlined text-[20px] text-secondary">sync_alt</span>
+              </div>
+              <div>
+                <h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Transmutation</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Semantic token translation preserving idioms.</p>
+              </div>
+              <div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+                <div class="bg-primary h-full w-full"></div>
+              </div>
+            </div>
+
+            <!-- Beat 04 -->
+            <div class="p-4 rounded-xl bg-surface flex flex-col justify-between shadow-sm space-y-4 border border-outline-variant/20 hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-label-sm text-primary">04</span>
+                <span class="material-symbols-outlined text-[20px] text-secondary">record_voice_over</span>
+              </div>
+              <div>
+                <h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Neural Voice</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Select warm studio pitch, pace, and breath cadence.</p>
+              </div>
+              <div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+                <div class="bg-primary h-full w-full"></div>
+              </div>
+            </div>
+
+            <!-- Beat 05 -->
+            <div class="p-4 rounded-xl bg-surface flex flex-col justify-between shadow-sm space-y-4 border border-outline-variant/20 hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-label-sm text-primary">05</span>
+                <span class="material-symbols-outlined text-[20px] text-secondary">waves</span>
+              </div>
+              <div>
+                <h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Speech Synthesis</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Client-side acoustic rendering with zero robot artifact.</p>
+              </div>
+              <div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+                <div class="bg-primary h-full w-full"></div>
+              </div>
+            </div>
+
+            <!-- Beat 06 -->
+            <div class="p-4 rounded-xl bg-surface flex flex-col justify-between shadow-sm space-y-4 border border-outline-variant/20 hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-label-sm text-primary">06</span>
+                <span class="material-symbols-outlined text-[20px] text-secondary">radio_button_checked</span>
+              </div>
+              <div>
+                <h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Studio Record</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">Buffer live voice stream into client 512MB RAM cache.</p>
+              </div>
+              <div class="w-full bg-surface-container-high h-1 rounded-full overflow-hidden">
+                <div class="bg-primary h-full w-full"></div>
+              </div>
+            </div>
+
+            <!-- Beat 07 -->
+            <div class="p-4 rounded-xl bg-surface flex flex-col justify-between shadow-sm space-y-4 col-span-2 md:col-span-1 border border-primary/30">
+              <div class="flex items-center justify-between">
+                <span class="font-mono font-bold text-label-sm text-primary">07</span>
+                <span class="material-symbols-outlined text-[20px] text-primary">download_done</span>
+              </div>
+              <div>
+                <h3 class="font-label-lg text-label-lg text-on-surface font-semibold">Lossless Export</h3>
+                <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-snug">1-click 320k MP3 / 48kHz WAV directly to local disk.</p>
+              </div>
+              <div class="w-full bg-primary h-1 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: PRODUCT CAPABILITIES & ARCHITECTURE -->
+      <section id="features" class="w-full py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-12">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div class="space-y-2 max-w-2xl">
+              <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Deep Engine Architecture</span>
+              <h2 class="font-headline-lg text-headline-lg text-on-surface">Engineered for Scholars, Researchers &amp; Sound Purists</h2>
+            </div>
+            <p class="font-body-md text-body-md text-secondary max-w-md">
+              A non-intrusive runtime designed to respect host tab memory, preventing DOM thrashing while maintaining instantaneous audio fidelity.
+            </p>
+          </div>
+
+          <!-- Editorial 3-Column Asymmetric Bento Grid -->
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <!-- Card 1 -->
+            <div class="p-8 rounded-2xl bg-surface-container flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-shadow border border-outline-variant/30">
+              <div class="space-y-4">
+                <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined text-[28px]">code_blocks</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">DOM Content Ingestion</h3>
+                <p class="font-body-md text-body-md text-secondary leading-relaxed">
+                  Invisible native observer hooks sit directly underneath ChatGPT, Claude, Gemini, and Perplexity. It isolates code blocks, formulas, and prose tokens cleanly without manual copy-pasting.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-lg bg-surface-container-high font-mono text-[12px] text-on-surface-variant space-y-1">
+                <div class="flex justify-between text-secondary"><span>Target Mutation</span><span class="text-primary font-semibold">Ready (0ms lag)</span></div>
+                <div class="truncate text-on-surface">mutation.observe(chatNode, { childList: true })</div>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="p-8 rounded-2xl bg-surface-container flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-shadow border border-outline-variant/30">
+              <div class="space-y-4">
+                <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined text-[28px]">record_voice_over</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Phonetic Preservation</h3>
+                <p class="font-body-md text-body-md text-secondary leading-relaxed">
+                  Maintains authentic dialect cadences across Indian regional scripts (Tamil, Telugu, Hindi, Kannada) and world languages without clipping retroflex consonants or flat robotic flattening.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-lg bg-surface-container-high font-mono text-[12px] text-on-surface-variant space-y-1">
+                <div class="flex justify-between text-secondary"><span>Diacritic Precision</span><span class="text-primary font-semibold">99.8%</span></div>
+                <div class="text-on-surface">Phoneme Mapping: UTF-8 Indic Matrix</div>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="p-8 rounded-2xl bg-surface-container flex flex-col justify-between space-y-6 shadow-sm hover:shadow-md transition-shadow border border-outline-variant/30">
+              <div class="space-y-4">
+                <div class="w-12 h-12 rounded-xl bg-surface-container-high flex items-center justify-center text-primary">
+                  <span class="material-symbols-outlined text-[28px]">folder_special</span>
+                </div>
+                <h3 class="font-headline-md text-headline-md text-on-surface">Lossless Local Vault</h3>
+                <p class="font-body-md text-body-md text-secondary leading-relaxed">
+                  Dedicated 512MB in-browser RAM vault caches generated MP3 320kbps and 48kHz WAV audio files. Your sound stays intact even if your chat tab crashes, reloads, or loses Wi-Fi connection.
+                </p>
+              </div>
+              <div class="p-3.5 rounded-lg bg-surface-container-high font-mono text-[12px] text-on-surface-variant space-y-1">
+                <div class="flex justify-between text-secondary"><span>Local Buffer</span><span class="text-primary font-semibold">IndexedDB Persistent</span></div>
+                <div class="text-on-surface">Export: {site}-{date}-{slug}.mp3</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: SUPPORTED AI PLATFORMS SECTION -->
+      <section id="supported-ai" class="w-full py-16 bg-surface-container-low border-y border-outline-variant/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-10">
+          <div class="flex flex-col items-center text-center space-y-3">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Model Interoperability</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">Engineered for the Modern AI Web</h2>
+            <p class="font-body-md text-body-md text-secondary max-w-xl">
+              VoiceSave AI injects a discreet, high-precision acoustic control capsule directly beneath response bubbles on every major AI workbench.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            <!-- ChatGPT -->
+            <div class="p-6 rounded-2xl bg-surface shadow-sm space-y-4 border border-outline-variant/20 hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="font-label-lg text-label-lg font-bold text-on-surface">ChatGPT</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-surface-container-high text-primary font-semibold">o1 &amp; GPT-4o</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-secondary">Docks seamlessly at the conclusion of code blocks and research dialogues.</p>
+              <div class="pt-2 flex items-center justify-between text-xs text-on-surface-variant border-t border-secondary-container/50">
+                <span>Hook: <code class="font-mono">.agent-turn</code></span>
+                <span class="text-primary font-semibold">Synced</span>
+              </div>
+            </div>
+
+            <!-- Claude 3.5 Sonnet -->
+            <div class="p-6 rounded-2xl bg-surface shadow-sm space-y-4 border border-outline-variant/20 hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="font-label-lg text-label-lg font-bold text-on-surface">Claude 3.5</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-surface-container-high text-primary font-semibold">Anthropic</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-secondary">Filters markdown tables and artifact windows into pure narrative speech.</p>
+              <div class="pt-2 flex items-center justify-between text-xs text-on-surface-variant border-t border-secondary-container/50">
+                <span>Hook: <code class="font-mono">.font-claude-message</code></span>
+                <span class="text-primary font-semibold">Synced</span>
+              </div>
+            </div>
+
+            <!-- Google Gemini -->
+            <div class="p-6 rounded-2xl bg-surface shadow-sm space-y-4 border border-outline-variant/20 hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="font-label-lg text-label-lg font-bold text-on-surface">Gemini 1.5</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-surface-container-high text-primary font-semibold">Google Pro</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-secondary">Handles long-context outputs up to 2 million tokens without voice stalling.</p>
+              <div class="pt-2 flex items-center justify-between text-xs text-on-surface-variant border-t border-secondary-container/50">
+                <span>Hook: <code class="font-mono">message-content</code></span>
+                <span class="text-primary font-semibold">Synced</span>
+              </div>
+            </div>
+
+            <!-- Perplexity Pro -->
+            <div class="p-6 rounded-2xl bg-surface shadow-sm space-y-4 border border-outline-variant/20 hover:border-primary/40 transition-colors">
+              <div class="flex items-center justify-between">
+                <span class="font-label-lg text-label-lg font-bold text-on-surface">Perplexity</span>
+                <span class="px-2 py-0.5 rounded text-[11px] font-mono bg-surface-container-high text-primary font-semibold">Search Pro</span>
+              </div>
+              <p class="font-body-sm text-body-sm text-secondary">Automatically strips footnote citations for uninterrupted spoken flow.</p>
+              <div class="pt-2 flex items-center justify-between text-xs text-on-surface-variant border-t border-secondary-container/50">
+                <span>Hook: <code class="font-mono">.prose-citation</code></span>
+                <span class="text-primary font-semibold">Synced</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: MULTILINGUAL & NATIVE SCRIPT EXPERIENCE -->
+      <section id="languages" class="w-full py-20 bg-surface">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-12">
+          <div class="max-w-3xl space-y-3">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Linguistic Fidelity</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">24 Dialects. Authentic Phonetic Cadence.</h2>
+            <p class="font-body-md text-body-md text-secondary leading-relaxed">
+              From classical Dravidian texts to European academic prose, our acoustic engine speaks languages in their true emotional register and rhythm.
+            </p>
+          </div>
+
+          <!-- Language Selector Interactive Chips -->
+          <div class="flex flex-wrap gap-2.5" id="lang-chips-container">
+            <button class="lang-pill px-3.5 py-1.5 rounded-full bg-inverse-surface text-inverse-on-surface font-label-md text-label-md font-semibold shadow-sm" data-lang="ta">Tamil (தமிழ்)</button>
+            <button class="lang-pill px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" data-lang="hi">Hindi (हिन्दी)</button>
+            <button class="lang-pill px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" data-lang="te">Telugu (తెలుగు)</button>
+            <button class="lang-pill px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" data-lang="kn">Kannada (ಕನ್ನಡ)</button>
+            <button class="lang-pill px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" data-lang="ml">Malayalam (മലയാളം)</button>
+            <button class="lang-pill px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" data-lang="bn">Bengali (বাংলা)</button>
+            <button class="lang-pill px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" data-lang="es">Spanish (Español)</button>
+            <button class="lang-pill px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" data-lang="fr">French (Français)</button>
+            <button class="lang-pill px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" data-lang="ja">Japanese (日本語)</button>
+            <button class="lang-pill px-3.5 py-1.5 rounded-full bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" data-lang="ar">Arabic (العربية)</button>
+          </div>
+
+          <!-- Side-by-Side Dual Script Transmutation Card -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 sm:p-8 rounded-2xl bg-surface-container-low shadow-sm border border-outline-variant/30">
+            <div class="space-y-3">
+              <div class="flex items-center justify-between text-secondary">
+                <span class="font-label-sm text-label-sm uppercase tracking-wider font-bold">Original AI Context (English)</span>
+                <span class="font-mono text-[11px]">Source Token Stream</span>
+              </div>
+              <p class="font-headline-sm text-headline-sm text-on-surface leading-relaxed">
+                "Neural networks achieve generalization by finding low-dimensional manifolds in high-dimensional representation spaces, minimizing empirical risk."
+              </p>
+              <div class="pt-2 text-on-surface-variant font-label-sm text-label-sm flex items-center gap-2">
+                <span class="material-symbols-outlined text-primary text-[16px]">tune</span>
+                <span>Technical jargon isolation enabled</span>
+              </div>
+            </div>
+
+            <div class="space-y-3 bg-surface p-5 sm:p-6 rounded-xl shadow-sm border border-outline-variant/20">
+              <div class="flex items-center justify-between text-secondary">
+                <span class="font-label-sm text-label-sm uppercase tracking-wider font-bold text-primary" id="demo-target-badge">Phonetic Synthesis (Tamil)</span>
+                <span class="font-mono text-[11px] text-primary" id="demo-cadence-badge">98.4% Cadence Match</span>
+              </div>
+              <p class="font-headline-sm text-headline-sm text-on-surface leading-relaxed font-normal" id="demo-translated-text">
+                "நரம்பியல் வலைப்பின்னல்கள் உயர் பரிமாண வெளிப்பாடுகளில் குறைந்த பரிமாண பன்மடிப்புகளை கண்டறிந்து பொதுமைப்படுத்தலை அடைகின்றன..."
+              </p>
+              <div class="pt-2 flex items-center justify-between">
+                <span class="font-mono text-[11px] text-on-surface-variant" id="demo-voice-badge">Voice: Deep Dravidian Pro</span>
+                <button id="btn-listen-sample" class="inline-flex items-center gap-1 font-label-sm text-label-sm text-primary font-bold hover:underline" type="button">
+                  <span class="material-symbols-outlined text-[16px]">volume_up</span>
+                  <span>Listen Sample</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: SCRIPT-TO-SPEECH WORKSPACE (Long-Form Studio Showcase) -->
+      <section id="script-to-speech" class="w-full py-20 bg-surface-container-high/40 border-y border-outline-variant/30">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-12">
+          <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div class="space-y-3 max-w-2xl">
+              <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Long-Form Studio</span>
+              <h2 class="font-headline-lg text-headline-lg text-on-surface">Beyond Short Prompts: Lecture &amp; Script Studio</h2>
+              <p class="font-body-md text-body-md text-secondary">
+                Paste full dissertation chapters, conference scripts, or podcast drafts. Insert deliberate breath breaks and pronunciation overrides effortlessly.
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="px-3 py-1.5 rounded-lg bg-surface font-label-sm text-label-sm text-on-surface shadow-sm border border-outline-variant/20">2,840 characters (~04:18 runtime)</span>
+            </div>
+          </div>
+
+          <!-- Studio Editor Mock -->
+          <div class="rounded-2xl bg-surface p-6 sm:p-8 shadow-md space-y-6 border border-outline-variant/30">
+            <div class="flex flex-wrap items-center justify-between gap-4 pb-4 border-b border-surface-container-highest">
+              <div class="flex items-center gap-2">
+                <button class="px-3 py-1.5 rounded-md bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" type="button">Pause +0.5s</button>
+                <button class="px-3 py-1.5 rounded-md bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" type="button">Pause +1.0s</button>
+                <button class="px-3 py-1.5 rounded-md bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors" type="button">Bypass Code</button>
+              </div>
+              <div class="flex items-center gap-3">
+                <span class="font-label-sm text-label-sm text-secondary">Voice Profile:</span>
+                <span class="px-2.5 py-1 rounded bg-surface-container-high font-label-md text-label-md text-on-surface font-semibold">Narrator Studio (Warm Bass)</span>
+              </div>
+            </div>
+
+            <!-- Script Workspace Area -->
+            <div class="space-y-4">
+              <div class="font-headline-sm text-headline-sm text-on-surface italic">
+                Chapter IV: The Thermodynamics of Algorithmic Information
+              </div>
+              <div class="font-body-lg text-body-lg text-secondary leading-relaxed space-y-3">
+                <p>
+                  In our third session, we established that information is physical. <span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-mono text-xs">+0.5s pause</span> Landauer's principle proves that the erasure of a single bit of information always dissipates a minimal thermodynamic cost of kT ln 2.
+                </p>
+                <p>
+                  When we analyze modern transformer attention mechanisms <span class="px-2 py-0.5 rounded bg-primary-fixed text-on-primary-fixed font-mono text-xs">+1.0s pause</span>, we are not simply looking at abstract matrix transformations; we are witnessing an engineered thermodynamic heat cycle across silicon wafers.
+                </p>
+              </div>
+            </div>
+
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+              <div class="flex items-center gap-3 text-secondary font-label-md text-label-md">
+                <span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary"></span> Ready to Compile</span>
+                <span>·</span>
+                <span>Target Bitrate: 320 kbps MP3</span>
+              </div>
+              <div class="flex items-center gap-space-md w-full sm:w-auto">
+                <button id="btn-preview-lecture" class="flex-1 sm:flex-none px-5 py-2.5 rounded-xl bg-surface-container text-on-surface font-label-lg text-label-lg hover:bg-surface-variant transition-colors" type="button">Preview Audio</button>
+                <a href="/home" class="flex-1 sm:flex-none px-6 py-2.5 rounded-xl bg-primary text-on-primary font-label-lg text-label-lg shadow hover:bg-primary-container transition-colors text-center">Synthesize &amp; Save</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: RECORD → PLAY → DOWNLOAD SIGNATURE AUDIO EXPERIENCE -->
+      <section class="w-full py-20 bg-inverse-surface text-inverse-on-surface">
+        <div class="max-w-7xl mx-auto px-6 lg:px-12 space-y-12">
+          <div class="max-w-2xl space-y-3">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary-fixed-dim font-bold">Acoustic Mastery</span>
+            <h2 class="font-headline-lg text-headline-lg text-inverse-on-surface">Record. Play. Export. In Master Quality.</h2>
+            <p class="font-body-md text-body-md text-secondary-fixed-dim leading-relaxed">
+              The four lifecycle states of an acoustic session, tuned for instantaneous execution and persistent local archival.
+            </p>
+          </div>
+
+          <!-- 4 Lifecycle Stages -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            <!-- Stage 1 -->
+            <div class="p-6 rounded-2xl bg-[#23211e] space-y-4 border border-white/5">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-secondary-fixed-dim">STATE 01</span>
+                <span class="material-symbols-outlined text-[20px] text-secondary-fixed-dim">mic_off</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-inverse-on-surface">Idle &amp; Armed</h3>
+              <p class="font-body-sm text-body-sm text-secondary-fixed-dim">DOM observer monitors streaming generation tokens passively.</p>
+              <div class="pt-2 text-xs font-mono text-primary-fixed-dim">Status: Listening</div>
+            </div>
+
+            <!-- Stage 2 -->
+            <div class="p-6 rounded-2xl bg-[#252320] space-y-4 shadow-lg ring-1 ring-primary/40 border border-primary/20">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-primary-fixed-dim">STATE 02</span>
+                <span class="w-2.5 h-2.5 rounded-full bg-primary animate-ping"></span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-inverse-on-surface">Active Recording</h3>
+              <p class="font-body-sm text-body-sm text-secondary-fixed-dim">Real-time PCM stream capture with peak clipping protection.</p>
+              <div class="pt-2 text-xs font-mono text-primary">Live: 00:08 / Rec Active</div>
+            </div>
+
+            <!-- Stage 3 -->
+            <div class="p-6 rounded-2xl bg-[#23211e] space-y-4 border border-white/5">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-secondary-fixed-dim">STATE 03</span>
+                <span class="material-symbols-outlined text-[20px] text-secondary-fixed-dim">equalizer</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-inverse-on-surface">Synthesis Buffer</h3>
+              <p class="font-body-sm text-body-sm text-secondary-fixed-dim">Encoding raw acoustic blocks into high-bitrate MP3 &amp; WAV.</p>
+              <div class="pt-2 text-xs font-mono text-secondary-fixed-dim">RAM: 4.8MB allocated</div>
+            </div>
+
+            <!-- Stage 4 -->
+            <div class="p-6 rounded-2xl bg-[#23211e] space-y-4 border border-white/5">
+              <div class="flex items-center justify-between">
+                <span class="font-mono text-xs text-secondary-fixed-dim">STATE 04</span>
+                <span class="material-symbols-outlined text-[20px] text-primary-fixed-dim">check_circle</span>
+              </div>
+              <h3 class="font-headline-sm text-headline-sm text-inverse-on-surface">Audio Ready</h3>
+              <p class="font-body-sm text-body-sm text-secondary-fixed-dim">Instant zero-loss export with rich ID3 tag metadata.</p>
+              <div class="pt-2 text-xs font-mono text-primary-fixed">Ready: 320k Lossless</div>
+            </div>
+          </div>
+
+          <!-- Lossless Encoding Strip -->
+          <div class="p-6 rounded-xl bg-[#1d1b19] flex flex-col md:flex-row items-center justify-between gap-4 border border-white/5">
+            <div class="flex items-center gap-4">
+              <span class="material-symbols-outlined text-primary text-[28px]">verified</span>
+              <div>
+                <div class="font-label-lg text-label-lg text-inverse-on-surface font-semibold">Lossless 320kbps CBR &amp; WAV 48kHz Master Encoding</div>
+                <div class="font-body-sm text-body-sm text-secondary-fixed-dim">Standardized metadata tagging: <span class="font-mono text-primary-fixed-dim">{site}-{date}-{topic-slug}.mp3</span></div>
+              </div>
+            </div>
+            <a class="px-5 py-2.5 rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow hover:bg-primary-container transition-colors" href="/home">
+              Experience Studio
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: MEMORABLE FINAL CTA -->
+      <section class="w-full py-24 bg-surface">
+        <div class="max-w-5xl mx-auto px-6 lg:px-12 text-center">
+          <div class="rounded-3xl bg-secondary-container/60 p-10 sm:p-16 space-y-8 shadow-sm relative overflow-hidden border border-outline-variant/30">
+            <!-- Subtle corner glow -->
+            <div class="absolute -top-20 -right-20 w-64 h-64 bg-primary/10 rounded-full blur-2xl pointer-events-none"></div>
+            <div class="space-y-4 max-w-2xl mx-auto relative z-10">
+              <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Endless Spoken Archival</span>
+              <h2 class="font-display text-display text-on-surface tracking-tight">
+                Your AI responses shouldn’t stop at the screen.
+              </h2>
+              <p class="font-body-lg text-body-lg text-secondary leading-relaxed">
+                Turn ephemeral LLM discussions and long-form scripts into permanent, studio-grade speech you can review, study, and archive anywhere.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center justify-center gap-space-md pt-2 relative z-10">
+              <a class="inline-flex items-center justify-center px-8 py-4 rounded-xl font-label-lg text-label-lg bg-primary text-on-primary shadow-md hover:bg-primary-container transition-all" href="/home">
+                Launch VoiceSave AI
+              </a>
+              <a class="inline-flex items-center justify-center gap-2 px-7 py-4 rounded-xl font-label-lg text-label-lg bg-surface text-on-surface hover:bg-surface-variant transition-colors shadow-sm border border-outline-variant/30" href="#install">
+                <span class="material-symbols-outlined text-[20px] text-primary">extension</span>
+                <span>Get Chrome Extension</span>
+              </a>
+            </div>
+            <div class="pt-4 text-xs font-mono text-on-surface-variant relative z-10">
+              Free &amp; Open Scaffolding · No Credit Card Required · Manifest v3 Compatible
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 9: CHROME EXTENSION INSTALLATION MODAL / ANCHOR -->
+      <section id="install" class="w-full py-16 bg-surface-container-low border-t border-outline-variant/30">
+        <div class="max-w-4xl mx-auto px-6 lg:px-12 space-y-8">
+          <div class="text-center space-y-3">
+            <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold">Get VoiceSave AI</span>
+            <h2 class="font-headline-lg text-headline-lg text-on-surface">How to Install in 3 Easy Steps</h2>
+            <p class="font-body-md text-body-md text-secondary">Run VoiceSave AI directly in your Chrome browser via Manifest v3 developer mode.</p>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div class="p-6 rounded-2xl bg-surface shadow-sm border border-outline-variant/20 space-y-3">
+              <div class="w-8 h-8 rounded-full bg-primary text-on-primary font-bold flex items-center justify-center text-sm font-mono">1</div>
+              <h3 class="font-label-lg text-label-lg font-bold text-on-surface">Open Extensions</h3>
+              <p class="font-body-sm text-body-sm text-secondary">In Chrome, visit <code class="bg-surface-container px-1.5 py-0.5 rounded text-xs font-mono">chrome://extensions</code> and enable <strong>Developer Mode</strong> at top right.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-surface shadow-sm border border-outline-variant/20 space-y-3">
+              <div class="w-8 h-8 rounded-full bg-primary text-on-primary font-bold flex items-center justify-center text-sm font-mono">2</div>
+              <h3 class="font-label-lg text-label-lg font-bold text-on-surface">Load Unpacked</h3>
+              <p class="font-body-sm text-body-sm text-secondary">Click <strong>Load unpacked</strong> button and select the root directory of this VoiceSave AI folder.</p>
+            </div>
+            <div class="p-6 rounded-2xl bg-surface shadow-sm border border-outline-variant/20 space-y-3">
+              <div class="w-8 h-8 rounded-full bg-primary text-on-primary font-bold flex items-center justify-center text-sm font-mono">3</div>
+              <h3 class="font-label-lg text-label-lg font-bold text-on-surface">Speak &amp; Save</h3>
+              <p class="font-body-sm text-body-sm text-secondary">Open ChatGPT, Claude, Gemini, or Perplexity. VoiceSave AI's Obsidian bar attaches automatically!</p>
+            </div>
+          </div>
+
+          <div class="flex justify-center gap-4 pt-4">
+            <a href="/home" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-on-primary font-label-md text-label-md shadow hover:bg-primary-container transition-colors">
+              <span class="material-symbols-outlined text-[18px]">play_circle</span>
+              <span>Try Live Simulator Online Now</span>
+            </a>
+            <a href="/src/popup/popup.html" target="_blank" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-surface text-on-surface font-label-md text-label-md border border-outline-variant/40 hover:bg-surface-container transition-colors">
+              <span class="material-symbols-outlined text-[18px]">open_in_new</span>
+              <span>Preview Extension Popup (400px)</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ========================================== -->
+  <!-- FOOTER                                     -->
+  <!-- ========================================== -->
+  <footer class="w-full bg-surface-container-low mt-20 border-t border-outline-variant/30">
+    <div class="max-w-7xl mx-auto px-6 lg:px-12 pt-16 pb-12">
+      <div class="grid grid-cols-1 md:grid-cols-12 gap-y-12 md:gap-x-8 pb-16">
+        
+        <div class="md:col-span-4 space-y-space-md">
+          <div class="flex items-center gap-space-md">
+            <img alt="Brand logo" class="h-7 w-auto object-contain rounded-md" src="assets/icon-48.png" onerror="this.src='https://lh3.googleusercontent.com/aida/AEtjO1WitH5PUYct2zju30NcXS0i2FlIUxyxv_zuHApMMPYsQhLJLttHBXapBwS2NJj6UFvfocMiMfwLdvje950lD8ABK_qibYmNKmAxPhpi8oZ5FYEgQbEvjXpZEHFKj9uommoguRm_aRg6cRue0Hk5JKV2R4qMS4VZuaAYVPTwqm0NNHzGELDYXx03siO7kRrW1XJESv04mc0e-cx9N6nFugj39uFR87GVOVrgaBBnrkuDzONjE-JaoMJf2ZkK'" />
+            <span class="font-headline-sm text-headline-sm text-on-surface italic">VoiceSave AI</span>
+          </div>
+          <p class="font-body-md text-body-md text-on-surface-variant max-w-sm">
+            Editorial luxury acoustic transcription and neural speech orchestration for cognitive researchers, scholars, and builders.
+          </p>
+          <div class="pt-space-xs">
+            <div class="inline-flex items-center gap-space-sm px-space-md py-space-xs rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm border border-outline-variant/20">
+              <span>Studio Acoustic Engine</span>
+              <span class="w-1.5 h-1.5 rounded-full bg-primary animate-pulse"></span>
+              <span class="text-on-surface font-semibold">v2.4 Live</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="md:col-span-3 space-y-space-md">
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold block">Model Interoperability</span>
+          <p class="font-body-sm text-body-sm text-on-surface-variant leading-relaxed">Engineered to dock frictionlessly alongside modern cognitive interfaces:</p>
+          <ul class="space-y-space-xs font-body-md text-body-md text-on-surface">
+            <li class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[16px]">check</span>ChatGPT (OpenAI o1, GPT-4o)</li>
+            <li class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[16px]">check</span>Claude 3.5 Sonnet &amp; Opus</li>
+            <li class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[16px]">check</span>Google Gemini 1.5 Pro</li>
+            <li class="flex items-center gap-space-xs"><span class="material-symbols-outlined text-primary text-[16px]">check</span>Perplexity Pro Search</li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-3 space-y-space-md">
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold block">Architecture &amp; Docs</span>
+          <ul class="space-y-space-sm font-label-lg text-label-lg text-on-surface-variant">
+            <li class="hover:text-on-surface transition-colors"><a href="#features">Audio Extraction Protocol</a></li>
+            <li class="hover:text-on-surface transition-colors"><a href="#script-to-speech">Voice Canvas Studio</a></li>
+            <li class="hover:text-on-surface transition-colors"><a href="#languages">Phonetic Language Grid</a></li>
+            <li class="hover:text-on-surface transition-colors"><a href="#install">Chromium Extension (Manifest v3)</a></li>
+            <li class="hover:text-on-surface transition-colors"><a href="/home">Interactive Host Simulator</a></li>
+          </ul>
+        </div>
+
+        <div class="md:col-span-2 space-y-space-md">
+          <span class="font-label-sm text-label-sm uppercase tracking-widest text-primary font-bold block">Integration</span>
+          <div class="flex flex-col gap-space-sm">
+            <a class="inline-flex items-center justify-between px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors border border-outline-variant/20" href="#install">
+              <span>Chrome Web Store</span>
+              <span class="material-symbols-outlined text-[16px]">arrow_outward</span>
+            </a>
+            <a class="inline-flex items-center justify-between px-space-md py-space-sm rounded-lg bg-surface-container text-on-surface font-label-md text-label-md hover:bg-surface-variant transition-colors border border-outline-variant/20" href="https://github.com/Padmanabhan-2007/VoiceSave-AI" target="_blank">
+              <span>GitHub Repo</span>
+              <span class="material-symbols-outlined text-[16px]">code</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="pt-8 flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant font-body-sm text-body-sm border-t border-outline-variant/20">
+        <p>© 2025 VoiceSave AI Research Labs. Handcrafted for analog warmth in digital intelligence.</p>
+        <div class="flex items-center gap-space-lg font-label-md text-label-md">
+          <a class="hover:text-on-surface transition-colors" href="#">Privacy Standards</a>
+          <a class="hover:text-on-surface transition-colors" href="#">Terms of Sound</a>
+          <a class="hover:text-on-surface transition-colors" href="#">Acoustic Support</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ========================================== -->
+  <!-- INTERACTIVE LANDING PAGE SCRIPT            -->
+  <!-- ========================================== -->
+  <script src="src/audio/lame.min.js"></script>
+  <script type="module">
+    import { TTSManager } from './src/tts/tts-manager.js';
+    import { SettingsStore } from './src/storage/settings.js';
+    import { encodeAudio } from './src/audio/encoder.js';
+    import { downloadBlob } from './src/utils/download.js';
+    import { generateAudioFilename } from './src/utils/format.js';
+
+    let settings = null;
+    let ttsManager = null;
+    let isHeroPlaying = false;
+    let activeLangCode = 'ta';
+
+    const MULTILINGUAL_DATA = {
+      ta: {
+        badge: 'Phonetic Synthesis (Tamil)',
+        cadence: '98.4% Cadence Match',
+        voice: 'Voice: Deep Dravidian Pro',
+        text: 'நரம்பியல் வலைப்பின்னல்கள் உயர் பரிமாண வெளிப்பாடுகளில் குறைந்த பரிமாண பன்மடிப்புகளை கண்டறிந்து பொதுமைப்படுத்தலை அடைகின்றன...'
+      },
+      hi: {
+        badge: 'Phonetic Synthesis (Hindi)',
+        cadence: '99.1% Cadence Match',
+        voice: 'Voice: Devanagari Warm Studio',
+        text: 'तंत्रिका नेटवर्क उच्च-आयामी प्रतिनिधित्व स्थानों में निम्न-आयामी मैनिफोल्ड खोजकर सामान्यीकरण प्राप्त करते हैं...'
+      },
+      te: {
+        badge: 'Phonetic Synthesis (Telugu)',
+        cadence: '98.0% Cadence Match',
+        voice: 'Voice: Andhra Resonance Core',
+        text: 'నాడీ నెట్‌వర్క్‌లు అధిక-డైమెన్షనల్ ప్రాతినిధ్య ప్రదేశాలలో తక్కువ-డైమెన్షనల్ మానిఫోల్డ్‌లను కనుగొనడం ద్వారా సాధారణీకరణను సాధిస్తాయి...'
+      },
+      kn: {
+        badge: 'Phonetic Synthesis (Kannada)',
+        cadence: '97.8% Cadence Match',
+        voice: 'Voice: Kannada Rashtriya Core',
+        text: 'ನರಮಂಡಲ ಜಾಲಗಳು ಉನ್ನತ ಆಯಾಮದ ಪ್ರಾತಿನಿಧ್ಯ ಜಾಗಗಳಲ್ಲಿ ಕಡಿಮೆ ಆಯಾಮದ ಮ್ಯಾನಿಫೋಲ್ಡ್‌ಗಳನ್ನು ಕಂಡುಕೊಳ್ಳುವ ಮೂಲಕ ಸಾಮಾನ್ಯೀಕರಣವನ್ನು ಸಾಧಿಸುತ್ತವೆ...'
+      },
+      ml: {
+        badge: 'Phonetic Synthesis (Malayalam)',
+        cadence: '98.2% Cadence Match',
+        voice: 'Voice: Kerala Kairali Engine',
+        text: 'ന്യൂറൽ നെറ്റ്‌വർക്കുകൾ ഉയർന്ന അളവിലുള്ള പ്രാതിനിധ്യ ഇടങ്ങളിൽ കുറഞ്ഞ അളവിലുള്ള മാനിഫോൾഡുകൾ കണ്ടെത്തി സാമാന്യവൽക്കരണം കൈവരിക്കുന്നു...'
+      },
+      bn: {
+        badge: 'Phonetic Synthesis (Bengali)',
+        cadence: '98.6% Cadence Match',
+        voice: 'Voice: Shonar Acoustic Engine',
+        text: 'নিউরাল নেটওয়ার্কগুলি উচ্চ-মাত্রিক উপস্থাপনা স্থানে কম-মাত্রিক বহুগুণ খুঁজে সাধারণীকরণ অর্জন করে...'
+      },
+      es: {
+        badge: 'Phonetic Synthesis (Spanish)',
+        cadence: '99.4% Cadence Match',
+        voice: 'Voice: Castilian Warm Bass',
+        text: 'Las redes neuronales logran la generalización al encontrar variedades de baja dimensión en espacios de representación...'
+      },
+      fr: {
+        badge: 'Phonetic Synthesis (French)',
+        cadence: '99.2% Cadence Match',
+        voice: 'Voice: Parisian Hexagonal Studio',
+        text: 'Les réseaux de neurones parviennent à une généralisation en découvrant des variétés de faible dimension...'
+      },
+      ja: {
+        badge: 'Phonetic Synthesis (Japanese)',
+        cadence: '98.9% Cadence Match',
+        voice: 'Voice: Tokyo Neural Acoustic',
+        text: 'ニューラルネットワークは、高次元の表現空間において低次元の多様体を発見することにより汎化を達成します...'
+      },
+      ar: {
+        badge: 'Phonetic Synthesis (Arabic)',
+        cadence: '97.5% Cadence Match',
+        voice: 'Voice: Classical Arabic Neural',
+        text: 'تحقق الشبكات العصبية التعميم من خلال إيجاد مشعبات منخفضة الأبعاد في مساحات التمثيل عالية الأبعاد...'
+      }
+    };
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      settings = await SettingsStore.getSettings();
+      ttsManager = new TTSManager(settings);
+
+      setupHeroPlayer();
+      setupLanguageChips();
+      setupLecturePreview();
+      setupHomeNavLinks();
+    });
+
+    function setupHomeNavLinks() {
+      if (location.protocol === 'file:') {
+        document.querySelectorAll('a[href="/home"]').forEach(link => {
+          link.href = './src/demo/demo.html';
+        });
+      }
+    }
+
+    function setupHeroPlayer() {
+      const playBtn = document.getElementById('hero-play-btn');
+      const playIcon = document.getElementById('hero-play-icon');
+      const dlBtn = document.getElementById('hero-download-btn');
+      const textEl = document.getElementById('hero-transmuted-text');
+      const waveform = document.getElementById('hero-waveform');
+
+      if (!playBtn || !textEl) return;
+
+      playBtn.addEventListener('click', async () => {
+        if (isHeroPlaying) {
+          ttsManager.stop();
+          isHeroPlaying = false;
+          playIcon.textContent = 'play_arrow';
+          if (waveform) waveform.classList.remove('animate-pulse');
+          return;
+        }
+
+        const text = textEl.textContent.trim();
+        isHeroPlaying = true;
+        playIcon.textContent = 'pause';
+        if (waveform) waveform.classList.add('animate-pulse');
+
+        try {
+          await ttsManager.speak({
+            text,
+            language: 'ta',
+            onEnd: () => {
+              isHeroPlaying = false;
+              playIcon.textContent = 'play_arrow';
+              if (waveform) waveform.classList.remove('animate-pulse');
+            },
+            onError: () => {
+              isHeroPlaying = false;
+              playIcon.textContent = 'play_arrow';
+              if (waveform) waveform.classList.remove('animate-pulse');
+            }
+          });
+        } catch (e) {
+          console.error(e);
+          isHeroPlaying = false;
+          playIcon.textContent = 'play_arrow';
+        }
+      });
+
+      if (dlBtn) {
+        dlBtn.addEventListener('click', async () => {
+          const originalContent = dlBtn.innerHTML;
+          dlBtn.innerHTML = '<span>⏳ Exporting MP3...</span>';
+          try {
+            const text = textEl.textContent.trim();
+            const canonical = await ttsManager.generateCanonicalSpeech({ text, language: 'ta' });
+            const encoded = await encodeAudio(canonical.audioBuffer, 'MP3');
+            const filename = generateAudioFilename('quantum-superposition', 'ta', 'mp3');
+            await downloadBlob(encoded.blob, filename);
+
+            dlBtn.innerHTML = '<span>✓ Saved to Downloads</span>';
+            setTimeout(() => { dlBtn.innerHTML = originalContent; }, 2500);
+          } catch (err) {
+            console.error('Download error:', err);
+            dlBtn.innerHTML = '<span>✖ Export Failed</span>';
+            setTimeout(() => { dlBtn.innerHTML = originalContent; }, 2000);
+          }
+        });
+      }
+    }
+
+    function setupLanguageChips() {
+      const pills = document.querySelectorAll('.lang-pill');
+      const badgeEl = document.getElementById('demo-target-badge');
+      const cadenceEl = document.getElementById('demo-cadence-badge');
+      const voiceEl = document.getElementById('demo-voice-badge');
+      const textEl = document.getElementById('demo-translated-text');
+      const sampleBtn = document.getElementById('btn-listen-sample');
+
+      pills.forEach((pill) => {
+        pill.addEventListener('click', () => {
+          pills.forEach((p) => {
+            p.classList.remove('bg-inverse-surface', 'text-inverse-on-surface', 'shadow-sm');
+            p.classList.add('bg-surface-container', 'text-on-surface');
+          });
+          pill.classList.remove('bg-surface-container', 'text-on-surface');
+          pill.classList.add('bg-inverse-surface', 'text-inverse-on-surface', 'shadow-sm');
+
+          activeLangCode = pill.dataset.lang || 'ta';
+          const data = MULTILINGUAL_DATA[activeLangCode] || MULTILINGUAL_DATA.ta;
+
+          if (badgeEl) badgeEl.textContent = data.badge;
+          if (cadenceEl) cadenceEl.textContent = data.cadence;
+          if (voiceEl) voiceEl.textContent = data.voice;
+          if (textEl) textEl.textContent = `"${data.text}"`;
+        });
+      });
+
+      if (sampleBtn) {
+        sampleBtn.addEventListener('click', async () => {
+          const data = MULTILINGUAL_DATA[activeLangCode] || MULTILINGUAL_DATA.ta;
+          sampleBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">volume_up</span><span>Speaking...</span>';
+          try {
+            await ttsManager.speak({
+              text: data.text,
+              language: activeLangCode,
+              onEnd: () => {
+                sampleBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">volume_up</span><span>Listen Sample</span>';
+              }
+            });
+          } catch (err) {
+            sampleBtn.innerHTML = '<span class="material-symbols-outlined text-[16px]">volume_up</span><span>Listen Sample</span>';
+          }
+        });
+      }
+    }
+
+    function setupLecturePreview() {
+      const btn = document.getElementById('btn-preview-lecture');
+      if (!btn) return;
+      btn.addEventListener('click', async () => {
+        const text = 'Landauer\'s principle proves that the erasure of a single bit of information always dissipates a minimal thermodynamic cost of kT ln 2.';
+        btn.textContent = 'Speaking...';
+        try {
+          await ttsManager.speak({
+            text,
+            language: 'en',
+            onEnd: () => { btn.textContent = 'Preview Audio'; }
+          });
+        } catch (e) {
+          btn.textContent = 'Preview Audio';
+        }
+      });
+    }
+  </script>
+</body>
+</html>

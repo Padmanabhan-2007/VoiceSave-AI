@@ -29,11 +29,17 @@ const MIME_TYPES = {
 const server = http.createServer((req, res) => {
   let reqPath = decodeURIComponent(req.url.split('?')[0]);
 
-  // Root redirect to interactive demo simulator
-  if (reqPath === '/' || reqPath === '') {
-    res.writeHead(302, { Location: '/src/demo/demo.html' });
-    res.end();
-    return;
+  // Clean route mappings for public web interface & studio
+  const normalizedRoute = reqPath.replace(/\/+$/, '') || '/';
+  if (normalizedRoute === '/') {
+    reqPath = '/index.html';
+  } else if (
+    normalizedRoute === '/home' ||
+    normalizedRoute === '/demo' ||
+    normalizedRoute === '/app' ||
+    normalizedRoute === '/simulator'
+  ) {
+    reqPath = '/src/demo/demo.html';
   }
 
   const safePath = path.normalize(reqPath).replace(/^(\.\.[\/\\])+/, '');
@@ -82,8 +88,8 @@ server.listen(PORT, () => {
   console.log(`  ➤ Settings Page:  ${optionsUrl}`);
   console.log(`========================================================`);
 
-  // Open default browser on Windows
-  if (process.platform === 'win32') {
+  // Open default browser on Windows if explicitly requested
+  if (process.platform === 'win32' && process.env.AUTO_OPEN) {
     exec(`start "" "${demoUrl}"`);
   }
 });

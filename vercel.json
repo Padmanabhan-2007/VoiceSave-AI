@@ -1,0 +1,9 @@
+{
+  "version": 2,
+  "rewrites": [
+    { "source": "/home", "destination": "/src/demo/demo.html" },
+    { "source": "/demo", "destination": "/src/demo/demo.html" },
+    { "source": "/app", "destination": "/src/demo/demo.html" },
+    { "source": "/simulator", "destination": "/src/demo/demo.html" }
+  ]
+}
